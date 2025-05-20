@@ -237,7 +237,7 @@ form.customForm input[name="confirmPassword"] {
 
 #edit-myProxy li.proxyInfoElement {
     padding-top: .8em;
-    border-bottom: 1px dotted #E0DFDF;
+    border-bottom: 1px dotted #898989;
     padding-bottom: 2em;
     padding-left: 0;
     clear: both;
@@ -251,7 +251,7 @@ form.customForm input[name="confirmPassword"] {
 }
 #edit-myProxy p.selected-editors {
     padding-top: 1.2em;
-    border-top: 1px solid #E0DFDF;
+    border-top: 1px solid #898989;
     padding-left: 0;
 }
 #edit-myProxy span.class-label {
@@ -338,7 +338,7 @@ li.proxyInfoElement {
 }
 p.selected-editors {
     padding-top: 1.2em;
-    border-top: 1px solid #E0DFDF;
+    border-top: 1px solid #898989;
     padding-left: 1.2em;
 }
 img.photo-profile,

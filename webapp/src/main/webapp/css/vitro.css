@@ -357,8 +357,8 @@ p#mngLabelsText {
 	 	text-decoration: none;
 		font-size: 18px;
 		border: none;
-	  padding-left: 13px;
-	  padding-top: 8px;
+        width: 104px;
+        height: 43px;
 	  cursor: pointer;
 }
 span.search-filter-selected {
@@ -376,6 +376,10 @@ input.search-homepage {
 		width: 351px;
 		background-position: right;
 }
+input.search-homepage::placeholder {
+        color: #676767;
+}
+
 a.filter-search {
 		position: absolute;
 		vertical-align: middle;
@@ -386,12 +390,6 @@ a.filter-search {
 		top: 0;
 		right: 135px;
 		z-index: 9999;
-}
-.filter-default {
-
-}
-.filter-active {
-
 }
 #filter-search-nav {
 		position: absolute;
