@@ -519,3 +519,8 @@ table#table-listing td {
 table#table-listing td  a {
 	word-wrap: break-word;
 }
+
+/* browseByVClass view browse people */
+.individual > p {
+    margin-bottom: 0;
+}
