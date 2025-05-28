@@ -40,7 +40,7 @@
         <#assign groupNameHtmlId = p.createPropertyGroupHtmlId(groupName) >
         <#assign verbose = (verbosePropertySwitch.currentValue)!false>
         <section id="${groupNameHtmlId?replace("/","-")}" class="property-group" role="region" style="<#if (sectionCount > 1) >display:none<#else>display:block</#if>">
-        <nav id="scroller" class="scroll-up hidden" role="navigation">
+        <nav class="scroller scroll-up hidden" role="navigation">
             <a href="#branding" title="${i18n().scroll_to_menus}" >
                 <img src="${urls.images}/individual/scroll-up.gif" alt="${i18n().scroll_to_menus}" />
             </a>
@@ -50,7 +50,7 @@
         <#if groupName?has_content>
 		    <#--the function replaces spaces in the name with underscores, also called for the property group menu-->
     	    <#assign groupNameHtmlId = p.createPropertyGroupHtmlId(groupName) >
-            <h2 id="${groupNameHtmlId?replace("/","-")}" pgroup="tabs" class="hidden">${p.capitalizeGroupName(groupName)}</h2>
+            <h2 id="${groupNameHtmlId?replace("/","-")}-title" pgroup="tabs" class="hidden">${p.capitalizeGroupName(groupName)}</h2>
         <#else>
             <h2 id="properties" pgroup="tabs" class="hidden">${i18n().properties_capitalized}</h2>
         </#if>
