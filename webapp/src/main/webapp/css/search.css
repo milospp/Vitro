@@ -80,11 +80,14 @@ span#searchHelp {
     font-size:.825em;
     padding-right:32px
 }
-img#downloadIcon {
+
+#downloadIcon {
     cursor: pointer;
     margin-left: 6px;
     vertical-align: top;
 }
+
 .download-url {
 	padding: 5px 25px 5px;
+    margin-bottom: 1.3em;
 }

@@ -51,11 +51,22 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/js/bootstrap
 </#macro>
 
 <#macro printResultNumbers>
+	<div style="display: flex">
 	<h2 class="searchResultsHeader">
 	<#escape x as x?html>
 	    ${i18n().results_found(hitCount)} 
 	</#escape>
 	<script type="text/javascript">
+
+		var i18nStrings = {
+			closeString: '${i18n().close?js_string}',
+			downloadResultsModalTitleString: '${i18n().download_results_modal_title?js_string}',
+			downloadResultsXmlFormatString: '${i18n().download_results_xml_format?js_string}',
+			downloadResultsCsvFormatString: '${i18n().download_results_csv_format?js_string}',
+			downloadResultsMaxResultsTitleString: '${i18n().download_results_max_results_title?js_string}',
+			downloadResultsMaxResultsSliderString: '${i18n().download_results_max_results_slider?js_string}',
+		};
+
 		var url = window.location.toString();
 		if (url.indexOf("?") == -1){
 			var queryText = 'querytext=${querytext?js_string}';
@@ -173,9 +184,12 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/js/bootstrap
 		}
 	
 	</script>
-	<img id="downloadIcon" src="images/download-icon.png" alt="${i18n().download_results}" title="${i18n().download_results}" />
-	<#-- <span id="downloadResults" style="float:left"></span>  -->
 	</h2>
+	<button id="downloadIcon" type="button" id="downloadResultsButton" aria-label="${i18n().download_results}" title="${i18n().download_results}" style="background:none;border:none;padding:0;">
+		<img src="images/download-icon.png" alt="${i18n().download_results}" />
+	</button>
+	<#-- <span id="downloadResults" style="float:left"></span>  -->
+	</div>
 </#macro>
 
 <#macro searchForm>
@@ -202,7 +216,7 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/js/bootstrap
 			</#list>
 		</div>
 		<div id="search-form-footer">
-			<div>
+			<div class="results-title">
 				<@printResultNumbers />
 			</div>
 			<div>
