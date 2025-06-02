@@ -14,6 +14,7 @@ $(document).ready(function(){
         showMore: function($toggleLink, $itemContainer) {
             $toggleLink.click(function() {
                 $itemContainer.show();
+                $itemContainer.find('a, button').first().focus();
                 $(this).attr('href', '#show less content');
                 $(this).text(i18nStrings.displayLess);
                 togglePropDisplay.showLess($toggleLink, $itemContainer);

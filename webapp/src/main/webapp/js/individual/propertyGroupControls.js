@@ -23,15 +23,18 @@ $(document).ready(function(){
         var groupName = $(this).attr("groupName");
         var $propertyGroupLi = $(this);
 
-        $(this).click(function() {
+        $(this).on('click keydown', function(e) {
+            if (e.type === 'click' || (e.type === 'keydown' && (e.key === 'Enter' || e.keyCode === 13))) {
 
             if ( $propertyGroupLi.attr("class") == "nonSelectedGroupTab clickable" ) {
                 $.each($('li.selectedGroupTab'), function() {
                     $(this).removeClass("selectedGroupTab clickable");
                     $(this).addClass("nonSelectedGroupTab clickable");
+                    $(this).attr("aria-selected", "false");
                 });
                 $propertyGroupLi.removeClass("nonSelectedGroupTab clickable");
                 $propertyGroupLi.addClass("selectedGroupTab clickable");
+                $propertyGroupLi.attr("aria-selected", "true");
             }
             if ( $propertyGroupLi.attr("groupname") == "viewAll" ) {
                 processViewAllTab();
@@ -46,6 +49,7 @@ $(document).ready(function(){
             }
             manageLocalStorage();
             return false;
+            }
         });
     });
 
@@ -79,9 +83,11 @@ $(document).ready(function(){
                     // select the correct tab
                     $('li[groupName="' + tabName + '"]').removeClass("nonSelectedGroupTab clickable");
                     $('li[groupName="' + tabName + '"]').addClass("selectedGroupTab clickable");
+                    $('li[groupName="' + tabName + '"]').attr("aria-selected", "true");
                     // deselect the first tab
                     $firstTab.removeClass("selectedGroupTab clickable");
                     $firstTab.addClass("nonSelectedGroupTab clickable");
+                    $firstTab.attr("aria-selected", "false");
                     $('section.property-group:visible').hide();
                     // show the selected tab section
                     $('section#' + tabName).show();
@@ -168,9 +174,11 @@ $(document).ready(function(){
                     var $firstTab = $('li.clickable').first();
                     $firstTab.removeClass("selectedGroupTab clickable");
                     $firstTab.addClass("nonSelectedGroupTab clickable");
+                    $firstTab.attr("aria-selected", "false");
                     // select the stored tab
                     $("li[groupName='" + groupName + "']").removeClass("nonSelectedGroupTab clickable");
                     $("li[groupName='" + groupName + "']").addClass("selectedGroupTab clickable");
+                    $("li[groupName='" + groupName + "']").attr("aria-selected", "true");
                     // hide the first tab section
                     $('section.property-group:visible').hide();
 
