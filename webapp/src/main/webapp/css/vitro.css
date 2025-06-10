@@ -295,7 +295,7 @@ ul.dropdown ul.sub_menu li.inactive {
 }
 ul.dropdown ul.sub_menu li a:hover,
 ul.dropdown ul.sub_menu li a.hover {
-    color: #999 !important;
+    color: #656565 !important;
 }
 /*  LEVEL THREE */
 ul.dropdown ul ul {
@@ -359,9 +359,7 @@ ul.language-dropdown ul.sub_menu li.inactive {
 }
 ul.language-dropdown ul.sub_menu li a:hover,
 ul.language-dropdown ul.sub_menu li a.hover {
-    color: #999 !important;
-	opacity: 0.6;
-	filter: alpha(opacity=60); /* For IE8 and earlier */
+    color: #656565 !important;
 }
 /* ------ MANAGE LABELS ------ */
 section#rdfsLabels {
