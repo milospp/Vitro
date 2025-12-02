@@ -20,11 +20,11 @@
     	    <#assign groupNameHtmlId = "${i18n().properties}" >
         </#if>
         <#if tabCount = 1 >
-            <li class="selectedGroupTab clickable" id="tab-${groupNameHtmlId?replace("/","-")}" aria-controls="${groupNameHtmlId?replace("/","-")}" groupName="${groupNameHtmlId?replace("/","-")}" aria-selected="true" role="tab" tabindex="0" >${p.capitalizeGroupName(groupName)}</li>
+            <li class="selectedGroupTab clickable" id="tab-${groupNameHtmlId?replace("/","-")}" aria-controls="${groupNameHtmlId?replace("/","-")}" groupName="${groupNameHtmlId?replace("/","-")}" aria-selected="true" role="tab" tabindex="0" >${groupName}</li>
             <li class="groupTabSpacer" aria-hidden="true">&nbsp;</li>
             <#assign tabCount = 2>
         <#else>
-            <li class="nonSelectedGroupTab clickable" id="tab-${groupNameHtmlId?replace("/","-")}" aria-controls="${groupNameHtmlId?replace("/","-")}" groupName="${groupNameHtmlId?replace("/","-")}" aria-selected="false" role="tab" tabindex="0" >${p.capitalizeGroupName(groupName)}</li>
+            <li class="nonSelectedGroupTab clickable" id="tab-${groupNameHtmlId?replace("/","-")}" aria-controls="${groupNameHtmlId?replace("/","-")}" groupName="${groupNameHtmlId?replace("/","-")}" aria-selected="false" role="tab" tabindex="0" >${groupName}</li>
             <li class="groupTabSpacer" aria-hidden="true">&nbsp;</li>
         </#if>
     </#if>
@@ -50,7 +50,7 @@
         <#if groupName?has_content>
 		    <#--the function replaces spaces in the name with underscores, also called for the property group menu-->
     	    <#assign groupNameHtmlId = p.createPropertyGroupHtmlId(groupName) >
-            <h2 id="${groupNameHtmlId?replace("/","-")}-title" pgroup="tabs" class="hidden">${p.capitalizeGroupName(groupName)}</h2>
+            <h2 id="${groupNameHtmlId?replace("/","-")}-title" pgroup="tabs" class="hidden">${groupName}</h2>
         <#else>
             <h2 id="properties" pgroup="tabs" class="hidden">${i18n().properties_capitalized}</h2>
         </#if>

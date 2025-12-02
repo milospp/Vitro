@@ -267,7 +267,7 @@ function createTooltipElement(data, hover = false) {
 }
 
 function setupCloseButtonHandler(element, tooltip) {
-    $('.tooltip a.close').click((event) => {
+    $('.tooltip a.close').on("click", (event) => {
         event.preventDefault();
         removeTooltip(tooltip, element);
         element.focus();

@@ -12,7 +12,7 @@ $(document).ready(function(){
 
     var togglePropDisplay = {
         showMore: function($toggleLink, $itemContainer) {
-            $toggleLink.click(function() {
+            $toggleLink.on("click", function() {
                 $itemContainer.show();
                 $itemContainer.find('a, button').first().focus();
                 $(this).attr('href', '#show less content');
@@ -23,7 +23,7 @@ $(document).ready(function(){
         },
 
         showLess: function($toggleLink, $itemContainer) {
-            $toggleLink.click(function() {
+            $toggleLink.on("click", function() {
                 $itemContainer.hide();
                 $(this).attr('href', '#show more content');
                 $(this).text(i18nStrings.displayMoreEllipsis);

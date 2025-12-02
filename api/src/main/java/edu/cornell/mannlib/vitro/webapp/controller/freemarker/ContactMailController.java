@@ -11,8 +11,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
 
 import javax.mail.Address;
 import javax.mail.Message;
@@ -30,6 +28,7 @@ import edu.cornell.mannlib.vitro.webapp.application.ApplicationUtils;
 import edu.cornell.mannlib.vitro.webapp.beans.ApplicationBean;
 import edu.cornell.mannlib.vitro.webapp.beans.CaptchaImplementation;
 import edu.cornell.mannlib.vitro.webapp.beans.CaptchaServiceBean;
+import edu.cornell.mannlib.vitro.webapp.config.ContextPath;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.TemplateProcessingHelper.TemplateProcessingException;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
@@ -102,7 +101,7 @@ public class ContactMailController extends FreemarkerHttpServlet {
         String errorMsg = validateInput(webusername, webuseremail, comments, captchaInput, captchaId, vreq);
 
         if (errorMsg != null) {
-            return errorParametersNotValid(errorMsg, webusername, webuseremail, comments, vreq.getContextPath());
+            return errorParametersNotValid(errorMsg, webusername, webuseremail, comments, ContextPath.getPath(vreq));
         }
 
         String spamReason = checkForSpam(comments, formType);
@@ -114,12 +113,12 @@ public class ContactMailController extends FreemarkerHttpServlet {
     }
 
     private String[] figureRecipients(VitroRequest vreq) {
-        String contactMailAddresses = vreq.getAppBean().getContactMail().trim();
+        String contactMailAddresses = vreq.getAppBean().getContactMail();
         if ((contactMailAddresses == null) || contactMailAddresses.isEmpty()) {
             return new String[0];
         }
 
-        return contactMailAddresses.split(",");
+        return contactMailAddresses.trim().split(",");
     }
 
     private ResponseValues processValidRequest(VitroRequest vreq,

@@ -26,29 +26,29 @@ $(document).ready(function(){
         $(this).on('click keydown', function(e) {
             if (e.type === 'click' || (e.type === 'keydown' && (e.key === 'Enter' || e.keyCode === 13))) {
 
-            if ( $propertyGroupLi.attr("class") == "nonSelectedGroupTab clickable" ) {
-                $.each($('li.selectedGroupTab'), function() {
-                    $(this).removeClass("selectedGroupTab clickable");
-                    $(this).addClass("nonSelectedGroupTab clickable");
-                    $(this).attr("aria-selected", "false");
-                });
-                $propertyGroupLi.removeClass("nonSelectedGroupTab clickable");
-                $propertyGroupLi.addClass("selectedGroupTab clickable");
-                $propertyGroupLi.attr("aria-selected", "true");
-            }
-            if ( $propertyGroupLi.attr("groupname") == "viewAll" ) {
-                processViewAllTab();
-            }
-            else {
-                padSectionBottoms();
-                var $visibleSection = $('section.property-group:visible');
-                $visibleSection.hide();
-                $('h2[pgroup=tabs]').addClass("hidden");
-                $('nav.scroller').addClass("hidden");
-                $('section#' + groupName).show();
-            }
-            manageLocalStorage();
-            return false;
+                if ( $propertyGroupLi.attr("class") == "nonSelectedGroupTab clickable" ) {
+                    $.each($('li.selectedGroupTab'), function() {
+                        $(this).removeClass("selectedGroupTab clickable");
+                        $(this).addClass("nonSelectedGroupTab clickable");
+                        $(this).attr("aria-selected", "false");
+                    });
+                    $propertyGroupLi.removeClass("nonSelectedGroupTab clickable");
+                    $propertyGroupLi.addClass("selectedGroupTab clickable");
+                    $propertyGroupLi.attr("aria-selected", "true");
+                }
+                if ( $propertyGroupLi.attr("groupname") == "viewAll" ) {
+                    processViewAllTab();
+                }
+                else {
+                    padSectionBottoms();
+                    var $visibleSection = $('section.property-group:visible');
+                    $visibleSection.hide();
+                    $('h2[pgroup=tabs]').addClass("hidden");
+                    $('nav.scroller').addClass("hidden");
+                    $('section#' + groupName).show();
+                }
+                manageLocalStorage();
+                return false;
             }
         });
     });
@@ -112,11 +112,11 @@ $(document).ready(function(){
         if ( $list.length > 0 )
         {
             var $more = $list.find('a.more-less');
-            $more.click();
+            $more.trigger("click");
         }
         else {
             var $more = $('ul#geographicFocusOfList').find('a.more-less');
-            $more.click();
+            $more.trigger("click");
         }
     }
 

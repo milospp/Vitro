@@ -81,6 +81,10 @@ span#searchHelp {
     padding-right:32px
 }
 
+.tab a:hover {
+	text-decoration: none;
+}
+
 #downloadIcon {
     cursor: pointer;
     margin-left: 6px;
