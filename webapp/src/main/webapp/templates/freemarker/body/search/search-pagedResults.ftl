@@ -65,7 +65,9 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/js/wNumb.min
         <#escape x as x?html>
             ${i18n().results_found(hitCount)} 
         </#escape>
-        <img id="downloadIcon" src="images/download-icon.png" alt="${i18n().download_results}" title="${i18n().download_results}" />
+        <button id="downloadIcon" type="button" id="downloadResultsButton" aria-label="${i18n().download_results}" title="${i18n().download_results}" style="background:none;border:none;padding:0;">
+            <img src="images/download-icon.png" alt="${i18n().download_results}" />
+        </button>
     </h2>
 </#macro>
 
