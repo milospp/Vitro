@@ -20,17 +20,17 @@
     	    <#assign groupNameHtmlId = "${i18n().properties}" >
         </#if>
         <#if tabCount = 1 >
-            <li class="selectedGroupTab clickable" groupName="${groupNameHtmlId?replace("/","-")}">${groupName}</li>
+            <li class="selectedGroupTab clickable" groupName="${groupNameHtmlId?replace("/","-")}" tabindex="0">${groupName}</li>
             <li class="groupTabSpacer">&nbsp;</li>
             <#assign tabCount = 2>
         <#else>
-            <li class="nonSelectedGroupTab clickable" groupName="${groupNameHtmlId?replace("/","-")}">${groupName}</li>
+            <li class="nonSelectedGroupTab clickable" groupName="${groupNameHtmlId?replace("/","-")}" tabindex="0">${groupName}</li>
             <li class="groupTabSpacer">&nbsp;</li>
         </#if>
     </#if>
 </#list>
 <#if (propertyGroups.all?size > 1) >
-    <li  class="nonSelectedGroupTab clickable" groupName="viewAll">${i18n().view_all_capitalized}</li>
+    <li  class="nonSelectedGroupTab clickable" groupName="viewAll" tabindex="0">${i18n().view_all_capitalized}</li>
     <li  class="groupTabSpacer">&nbsp;</li>
 </#if>
 </ul>
