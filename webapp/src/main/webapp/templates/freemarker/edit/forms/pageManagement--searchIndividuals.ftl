@@ -4,8 +4,8 @@
 <#assign classGroups = pageData.classGroups />
 <#assign classes = pageData.classes />
 <section id="searchIndividuals" class="contentSectionContainer">
-    <label id="variableLabel" for="variable">${i18n().variable_name_all_caps}<span class="requiredHint"> *</span></label>
-    <input type="text" name="saveToVar" size="20" value="" id="saveToVar" />
+    <label id="variableLabel" for="saveToVar">${i18n().variable_name_all_caps}<span class="requiredHint"> *</span></label>
+    <input type="text" name="saveToVar" size="20" value="" id="saveToVar" aria-label="${i18n().variable_name_all_caps}" />
     <label id="vclassUriLabel" for="vclassUri">${i18n().select_vclass_uri}<span class="requiredHint"> *</span></label>
     <br/>
     <select name="vclassUri" id="vclassUri">

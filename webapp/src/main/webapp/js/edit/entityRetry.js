@@ -211,6 +211,7 @@ function fillList(id, data, selectedtext) {
 		theContentValue=document.getElementById(TrId+"contentValue");
 		theTaTa = document.getElementById(TrId+"tata");
 		theTaTa.name=newTaName;
+		theTaTa.setAttribute('aria-label', document.getElementById(baseId+"fieldName").textContent);
 		theTaTa.style.display="block";
 		theTa = document.getElementById(TrId+"ta");
 		theTa.style.display="block";

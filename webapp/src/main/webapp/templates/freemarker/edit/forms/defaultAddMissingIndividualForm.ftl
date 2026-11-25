@@ -15,7 +15,7 @@ ${i18n().new_entry_for(editConfiguration.propertyPublicDomainTitle, editConfigur
 
 <form class="editForm" action="${submitUrl}">
     <input type="hidden" name="editKey" id="editKey" value="${editKey}" />
-    <input type="text" name="name" id="name" label="name (required)" size="30" />
+    <input type="text" name="name" id="name" aria-label="${i18n().name}" size="30" />
 
     <p class="submit">
         <input type="submit" id="submit" value="${submitLabel}" aria-label="${submitLabel}" />

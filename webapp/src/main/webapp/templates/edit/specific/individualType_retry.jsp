@@ -15,7 +15,7 @@
     </tr>
     <tr class="editformcell">
         <td valign="top">
-            <select name="TypeURI" >
+            <select name="TypeURI" aria-label="has type">
             	<form:option name="types"/>
             </select>
             <span class="warning"><form:error name="TypeURI"/></span>

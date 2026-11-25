@@ -11,7 +11,7 @@
 <#assign literalValues = "${editConfiguration.dataLiteralValuesAsString}" />
 
 <form class="editForm" action = "${submitUrl}" method="post">
-    <input type="text" name="${editConfiguration.varNameForObject}" id="label" size="70" value="${literalValues?html}"/>
+    <input type="text" name="${editConfiguration.varNameForObject}" id="label" size="70" value="${literalValues?html}" aria-label="${i18n().label}"/>
     <input type="hidden" name="editKey" id="editKey" value="${editKey}"/>
     <input type="hidden" name="vitroNsProp" value="true"/>
 

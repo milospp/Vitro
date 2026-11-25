@@ -102,7 +102,7 @@
                 </#if>
                 <#break>
             <#case 'edu.cornell.library.scholars.webapp.controller.api.distribute.DataDistributor'>
-                <select name="${property.propertyUri}">
+                <select name="${property.propertyUri}" aria-label="${i18n()["dd_config_" + property.propertyUri]}">
                     <#list datadistributors as datadistributor>
                         <#if fields[property.propertyUri]??>
                             <option value="${datadistributor.uri}" <#if fields[property.propertyUri]?seq_contains(datadistributor.uri)>selected</#if> >${datadistributor.name}</option>
@@ -113,7 +113,7 @@
                 </select>
                 <#break>
             <#case 'edu.cornell.library.scholars.webapp.controller.api.distribute.rdf.graphbuilder.GraphBuilder'>
-                <select name="${property.propertyUri}">
+                <select name="${property.propertyUri}" aria-label="${i18n()["dd_config_" + property.propertyUri]}">
                     <#list graphbuilders as graphbuilder>
                         <#if fields[property.propertyUri]??>
                             <option value="${graphbuilder.uri}" <#if fields[property.propertyUri]?seq_contains(graphbuilder.uri)>selected</#if> >${graphbuilder.name}</option>
@@ -154,14 +154,14 @@
         <#case 'http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#query'>
         <#case 'http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#constructQuery'>
         <#case 'http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#drillDownQuery'>
-            <textarea id="yasqe" name='${propertyUri}' rows='30' cols='100' class="span-23 maxWidth" <#if readOnly??>readonly</#if>>${value}</textarea>
+            <textarea id="yasqe" name='${propertyUri}' aria-label="${i18n()["dd_config_" + propertyUri]}" rows='30' cols='100' class="span-23 maxWidth" <#if readOnly??>readonly</#if>>${value}</textarea>
             <#if readOnly??>
             <#else>
                 <#assign enableYasqe = true />
             </#if>
             <#break>
         <#default>
-            <p><input type="text" name="${propertyUri}" size="50" value="${value}" <#if required>required</#if> <#if readOnly??>readonly</#if> /></p>
+            <p><input type="text" name="${propertyUri}" size="50" value="${value}" aria-label="${i18n()["dd_config_" + propertyUri]}" <#if required>required</#if> <#if readOnly??>readonly</#if> /></p>
             <#break>
     </#switch>
 </#macro>
@@ -172,7 +172,10 @@
     <script type="text/javascript">
         YASQE.defaults.createShareLink = false;
         YASQE.defaults.persistent = false;
-        var yasqe = YASQE.fromTextArea(document.getElementById('yasqe'));
+        var queryArea = document.getElementById('yasqe');
+        var yasqe = YASQE.fromTextArea(queryArea);
+        // YASQE creates its own input field without copying the textarea's label.
+        yasqe.getInputField().setAttribute('aria-label', queryArea.getAttribute('aria-label'));
     </script>
 </#if>
 
@@ -181,7 +184,17 @@
         var element = document.getElementById('field_' + id);
         if (element != null) {
             if (element.childElementCount - 1 < count) {
-                element.insertAdjacentHTML('beforeend', '<p><input type="text" name="' + id + '" size="50" /></p>');
+                var existing = element.querySelector('input[type="text"]');
+                var p = document.createElement('p');
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.name = id;
+                input.size = 50;
+                if (existing != null && existing.hasAttribute('aria-label')) {
+                    input.setAttribute('aria-label', existing.getAttribute('aria-label'));
+                }
+                p.appendChild(input);
+                element.appendChild(p);
             }
 
             if (element.childElementCount - 1 >= count) {

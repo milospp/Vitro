@@ -6,7 +6,7 @@
 <!-- @pre -->
 
 <li style="padding-top:0.8em;padding-bottom:0.5em;" id="datapropsNNsuper">
-<strong>$fieldName</strong><a id="datapropsNNaddLink" style="margin-left:0.5em;font-style:italic;font-weight:bold;" href="#" onClick="addLine(this, 'dataprops');return false;">add</a>
+<strong id="datapropsNNfieldName">$fieldName</strong><a id="datapropsNNaddLink" style="margin-left:0.5em;font-style:italic;font-weight:bold;" href="#" onClick="addLine(this, 'dataprops');return false;">add</a>
 
 <span id="datapropsNNgenTaName" style="display:none;">$genTaName</span>
 
@@ -25,12 +25,12 @@
     </div>
     <div id="datapropsNNta" style="display:none;">
         <div style="padding:0;margin:0;">
-            <textarea style="margin:0;padding:0;width:95%;height:16ex;" id="datapropsNNtata" name="$taName">$$</textarea>
+            <textarea style="margin:0;padding:0;width:95%;height:16ex;" id="datapropsNNtata" name="$taName" aria-label="$fieldName">$$</textarea>
         </div>
         <div style="padding:0;margin:0;">
-            <input id="datapropsNNokLink" style="margin:0;padding:0;" type="button" onClick="backToLi(this);return false;" value='OK'/>
-            <input id="datapropsNNcancelLink" style="margin:0;padding:0;" type="button" onClick="cancelBackToLi(this);return false;" value='cancel'/>
-            <input id="datapropsNNosLink" style="margin-left:5em;padding:0;" type="button" onClick="backToLi(this);submitPage();return false;" value='OK & save all changes'/>
+            <input id="datapropsNNokLink" style="margin:0;padding:0;" type="button" onClick="backToLi(this);return false;" value='OK' aria-label='OK'/>
+            <input id="datapropsNNcancelLink" style="margin:0;padding:0;" type="button" onClick="cancelBackToLi(this);return false;" value='cancel' aria-label='cancel'/>
+            <input id="datapropsNNosLink" style="margin-left:5em;padding:0;" type="button" onClick="backToLi(this);submitPage();return false;" value='OK & save all changes' aria-label='OK &amp; save all changes'/>
         </div>
     </div>
 </li>

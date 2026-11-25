@@ -14,7 +14,7 @@
         <b>New URI</b>&nbsp;<span class="note"> (must begin with http:// or https://)</span>
         <br/>
         <span class="warning"><strong>${epo.attributeMap['errorMsg']}</strong></span>
-        <input type="text" size="95%" name="newURI" value='<%=request.getParameter("oldURI")%>'/>
+        <input type="text" size="95%" name="newURI" aria-label="New URI" value='<%=request.getParameter("oldURI")%>'/>
     </td>
 </tr>
 <script  type="text/javascript">

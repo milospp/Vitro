@@ -20,7 +20,7 @@
 						type="checkbox" name="uriSuppression${operationLowercase}Roles"
 						value="${role.uri}" ${role.granted?'checked':''}
 						${role.enabled?'':'disabled'} />
-					<label class="inline" for="${operationLowercase}${role.label}">${role.label}</label>
+					<label class="inline" for="uriSuppression${operationLowercase}${role.label}">${role.label}</label>
 				</c:forEach>
 			</td>
 		</tr>
@@ -37,7 +37,7 @@
     <tr class="editformcell" id="entityNameTr">
         <td valign="bottom" id="entityNameTd" colspan="2">
 			<b>Individual Name *</b><br/>
-            <input style="width:80%;" type="text" name="Name" value="<form:value name="Name"/>" />
+            <input style="width:80%;" type="text" name="Name" aria-label="Individual Name" value="<form:value name="Name"/>" />
            <c:set var="NameError"><form:error name="Name"/></c:set>
             <c:if test="${!empty NameError}">
                 <span class="notice"><c:out value="${NameError}"/></span>

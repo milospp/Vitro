@@ -24,22 +24,22 @@
         <input type="hidden" name="switchToDisplayModel" id="switchToDisplayModel" value="true" />
 
         <label for="menu-name">${i18n().name}<span class="requiredHint"> *</span></label>
-        <input type="text" name="menuName" value="${menuName}" />
+        <input type="text" id="menu-name" name="menuName" value="${menuName}" />
 
         <label for="pretty-url">${i18n().pretty_url}<span class="requiredHint"> *</span></label>
-        <input type="text" name="prettyUrl" value="${prettyUrl}" />
+        <input type="text" id="pretty-url" name="prettyUrl" value="${prettyUrl}" />
         <p class="note">${i18n().start_with_leading_slash}</p>
 
         <p>${i18n().template_capitalized}<span class="requiredHint"> *</span></p>
 
-        <input type="radio" class="default-template" name="selectedTemplate" value="default" <#if selectedTemplateType = "default">checked</#if> role="radio" />
+        <input type="radio" id="default" class="default-template" name="selectedTemplate" value="default" <#if selectedTemplateType = "default">checked</#if> role="radio" />
         <label class="inline" for="default"> ${i18n().default}</label>
         <br />
-        <input type="radio" name="selectedTemplate" class="custom-template" value="custom" <#if selectedTemplateType = "custom">checked</#if> />
+        <input type="radio" id="custom" name="selectedTemplate" class="custom-template" value="custom" <#if selectedTemplateType = "custom">checked</#if> />
         <label class="inline" for="custom"> ${i18n().custom_template_mixed_caps}</label>
 
         <section id="custom-template" <#if selectedTemplateType != 'custom'>class="hidden" </#if>role="region">
-            <input type="text" name="customTemplate" value="${customTemplate!}" size="40" /><span class="requiredHint"> *</span>
+            <input type="text" name="customTemplate" value="${customTemplate!}" size="40" aria-label="${i18n().template_capitalized}" /><span class="requiredHint"> *</span>
         </section>
 
         <section id="existingContentType" name="existingContentType" ${existingClassGroupStyle} role="region">
@@ -72,11 +72,11 @@
                 <#--Adding a default class for "ALL" in case all classes selected-->
                 <li class="ui-state-default" role="menuitem">
                     <input type="checkbox" name="allSelected" id="allSelected" value="all" <#if !isIndividualsForClassesPage?has_content>checked</#if> />
-                    <label class="inline" for="All"> ${i18n().all_capitalized}</label>
+                    <label class="inline" for="allSelected"> ${i18n().all_capitalized}</label>
                 </li>
                 <#list classGroup as classInClassGroup>
                 <li class="ui-state-default" role="menuitem">
-                    <input type="checkbox" id="classInClassGroup" name="classInClassGroup" value="${classInClassGroup.URI}" <#if includeAllClasses = true>checked</#if>
+                    <input type="checkbox" id="classInClassGroup" name="classInClassGroup" value="${classInClassGroup.URI}" aria-label="${classInClassGroup.name?html}" <#if includeAllClasses = true>checked</#if>
                      <#if isIndividualsForClassesPage?has_content>
                             <#list includeClasses as includeClass>
                                 <#if includeClass = classInClassGroup.URI>

@@ -45,24 +45,24 @@
 		<td colspan="${colspan}">
 			<c:choose>
 				<c:when test='${_action == "insert"}'>
-					<input id="primaryAction" type="submit" class="submit" name="_insert" value="Create New Record"/>
+					<input id="primaryAction" type="submit" class="submit" name="_insert" value="Create New Record" aria-label="Create New Record"/>
 				</c:when>
 				<c:otherwise>
-    				<input id="primaryAction" type="submit" class="submit" name="_update" value="Submit Changes"/>
+    				<input id="primaryAction" type="submit" class="submit" name="_update" value="Submit Changes" aria-label="Submit Changes"/>
                     <c:if test="${ ! (_cancelButtonDisabled == 'disabled') }">
-				        <input type="submit" class="delete" name="_delete" onclick="return confirmDelete();" value="Delete"/>
+				        <input type="submit" class="delete" name="_delete" onclick="return confirmDelete();" value="Delete" aria-label="Delete"/>
                     </c:if>
 				</c:otherwise>
 			</c:choose>
 
-			<input type="reset"  class="delete" value="Reset"/>
+			<input type="reset"  class="delete" value="Reset" aria-label="Reset"/>
 
             <c:choose>
                 <c:when test="${!empty formOnCancel}">
-                    <input type="submit" class="delete" name="_cancel" onclick="${formOnCancel}" value="Cancel"/>
+                    <input type="submit" class="delete" name="_cancel" onclick="${formOnCancel}" value="Cancel" aria-label="Cancel"/>
                 </c:when>
                 <c:otherwise>
-		            <input type="submit" class="delete" name="_cancel" value="Cancel"/>
+		            <input type="submit" class="delete" name="_cancel" value="Cancel" aria-label="Cancel"/>
                 </c:otherwise>
             </c:choose>
 		</td>

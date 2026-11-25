@@ -2,7 +2,7 @@
 <h2>${i18n().dd_config_title}</h2>
 <section id="datadistributor-config" role="region">
     <form id="ddConfigForm" action="${submitUrlBase}" method="get">
-        <select name="addType">
+        <select name="addType" aria-label="${i18n().dd_config_type}">
             <#list distributorTypes as distributorType>
                 <option value="${distributorType.name}">${i18n()["dd_config_" + distributorType.name]}</option>
             </#list>
@@ -38,7 +38,7 @@
 <h2>${i18n().dd_graphbuilder_config_title}</h2>
 <section id="datadistributor-config" role="region">
     <form id="ddConfigForm" action="${submitUrlBase}" method="get">
-        <select name="addType">
+        <select name="addType" aria-label="${i18n().dd_config_type}">
             <#list graphbuilderTypes as graphbuilderType>
                 <option value="${graphbuilderType.name}">${i18n()["dd_config_" + graphbuilderType.name]}</option>
             </#list>

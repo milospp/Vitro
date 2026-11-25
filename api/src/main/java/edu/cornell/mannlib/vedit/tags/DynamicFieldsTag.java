@@ -23,6 +23,7 @@ import edu.cornell.mannlib.vedit.beans.FormObject;
 import edu.cornell.mannlib.vedit.beans.DynamicField;
 import edu.cornell.mannlib.vedit.beans.DynamicFieldRow;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import edu.cornell.mannlib.vedit.tags.EditTag;
@@ -190,6 +191,7 @@ public class DynamicFieldsTag extends EditTag {
                                 String templateWithVars = templateMarkup;
                                 templateWithVars = strReplace(templateWithVars, type + "NN", Integer.toString(i));
                                 templateWithVars = strReplace(templateWithVars, "\\$taName", taName.toString());
+                                templateWithVars = strReplace(templateWithVars, "\\$fieldName", StringEscapeUtils.escapeHtml4(dynf.getName()));
                                 templateWithVars = strReplace(templateWithVars, "\\$\\$", row.getValue());
                                 out.print(templateWithVars);
                             }

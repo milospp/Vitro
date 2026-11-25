@@ -40,12 +40,12 @@
                     <ul id="selectedClasses" name="selectedClasses" role="menu">
                         <#--Adding a default class for "ALL" in case all classes selected-->
                         <li class="ui-state-default" role="menuitem">
-                            <input type="checkbox" name="allSelected" id="allSelected" value="all" checked="checked" />
-                            <label class="inline" for="All"> ${i18n().all_capitalized}</label>
+                            <input type="checkbox" name="allSelected" id="allSelected" value="all" checked="checked" aria-label="${i18n().all_capitalized}" />
+                            <label class="inline" for="allSelected"> ${i18n().all_capitalized}</label>
                         </li>
                         <#list classGroup as classInClassGroup>
                         <li class="ui-state-default" role="menuitem">
-                            <input type="checkbox" id="classInClassGroup" name="classInClassGroup" value="${classInClassGroup.URI}" checked="checked" />
+                            <input type="checkbox" id="classInClassGroup" name="classInClassGroup" value="${classInClassGroup.URI}" checked="checked" aria-label="${classInClassGroup.name?html}" />
                             <label class="inline" for="${classInClassGroup.name}"> ${classInClassGroup.name}</label>
                             <span class="ui-icon-sortable"></span>
                         </li>

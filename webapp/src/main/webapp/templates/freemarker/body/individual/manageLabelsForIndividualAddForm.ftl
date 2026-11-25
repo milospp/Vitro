@@ -3,7 +3,7 @@
 <form id="addLabelForm" name="addLabelForm" class="customForm" action="${submitUrl}">
    <h2>${i18n().add_label}</h2>
 <p>
-  <label for="name">${i18n().name} ${requiredHint}</label>
+  <label for="label">${i18n().name} ${requiredHint}</label>
   <input size="30"  type="text" id="label" name="label" value="" />
 </p>
 

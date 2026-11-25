@@ -6,7 +6,7 @@
 <tr class="editformcell">
 		<td valign="top">
 			<b>Class group name*</b> (max 120 characters)<br />
-				<input type="text" name="PublicName" value="<form:value name="PublicName"/>" size="50" maxlength="120" />
+				<input type="text" name="PublicName" aria-label="Class group name" value="<form:value name="PublicName"/>" size="50" maxlength="120" />
 				<c:set var="PublicNameError"><form:error name="PublicName"/></c:set>
                 <c:if test="${!empty PublicNameError}">
                     <span class="notice"><c:out value="${PublicNameError}"/></span>
@@ -16,7 +16,7 @@
 	<tr class="editformcell">
 		<td valign="top">
 			<b>Display rank </b> (lower number displays first)<br />
-				<input type="text" name="DisplayRank" value="<form:value name="DisplayRank"/>" size="3" maxlength="11" />
+				<input type="text" name="DisplayRank" aria-label="Display rank" value="<form:value name="DisplayRank"/>" size="3" maxlength="11" />
 				<c:set var="DisplayRankError"><form:error name="DisplayRank"/></c:set>
                 <c:if test="${!empty DisplayRankError}">
                     <span class="notice"><c:out value="${DisplayRankError}"/></span>

@@ -25,6 +25,11 @@
 <#assign literalValues = "${editConfiguration.dataLiteralValuesAsString?html}" />
 <#assign datatype = editConfiguration.dataPredicateProperty.rangeDatatypeURI!"none" />
 
+<#assign literalAriaLabel = "" />
+<#if !editConfiguration.dataPredicatePublicDescription?has_content>
+    <#assign literalAriaLabel = 'aria-label="${editConfiguration.formTitle?html}"' />
+</#if>
+
 <form class="editForm" action = "${submitUrl}" method="post">
     <input type="hidden" name="editKey" id="editKey" value="${editKey}" />
     <#if editConfiguration.dataPredicatePublicDescription?has_content>
@@ -32,16 +37,16 @@
     </#if>
 
 	<#if "HTML" == editConfiguration.dataPredicateProperty.editing!>
-		<textarea rows="2" id="literal" name="literal" class="useTinyMce">${literalValues}</textarea>
+		<textarea rows="2" id="literal" name="literal" ${literalAriaLabel} class="useTinyMce">${literalValues}</textarea>
 
 	<#elseif datatype = "http://www.w3.org/2001/XMLSchema#integer" || datatype = "http://www.w3.org/2001/XMLSchema#int">
-    	<input type="text" id="literal" name="literal" value="${literalValues}" placeholder="123456" />
+    	<input type="text" id="literal" name="literal" ${literalAriaLabel} value="${literalValues}" placeholder="123456" />
 
     <#elseif datatype = "http://www.w3.org/2001/XMLSchema#float">
-        <input type="text" id="literal" name="literal" value="${literalValues}" placeholder="12.345" />
+        <input type="text" id="literal" name="literal" ${literalAriaLabel} value="${literalValues}" placeholder="12.345" />
 
     <#elseif datatype = "http://www.w3.org/2001/XMLSchema#boolean">
-        <select id="literal" name="literal">
+        <select id="literal" name="literal" ${literalAriaLabel}>
             <#if literalValues = "true">
                 <option value="true" selected="true">true</option>
                 <option value="false">false</option>
@@ -52,7 +57,7 @@
         </select>
 
     <#elseif datatype = "http://www.w3.org/2001/XMLSchema#anyURI">
-        <input type="text" id="literal" name="literal" value="${literalValues}" placeholder="http://..." />
+        <input type="text" id="literal" name="literal" ${literalAriaLabel} value="${literalValues}" placeholder="http://..." />
 
     <#elseif datatype = "http://www.w3.org/2001/XMLSchema#dateTime" ||
         		datatype = "http://www.w3.org/2001/XMLSchema#date" ||
@@ -63,7 +68,7 @@
         <#include "dateTimeEntryForm.ftl">
 
     <#else>
-        <input type="text" size="70" id="literal" name="literal" value="${literalValues}" />
+        <input type="text" size="70" id="literal" name="literal" ${literalAriaLabel} value="${literalValues}" />
 
     </#if>
 

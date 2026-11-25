@@ -10,11 +10,11 @@
 <tr class="editformcell">
     <td valign="top" colspan="2">
         <b>Parent property</b><br/>
-        <select name="ParentURI"><form:option name="ParentURI"/></select>
+        <select name="ParentURI" aria-label="Parent property"><form:option name="ParentURI"/></select>
     </td>
     <td valign="top" colspan="2">
 	    <b>Property group</b><br/>
-	    <select name="GroupURI"><form:option name="GroupURI"/></select><br/>
+	    <select name="GroupURI" aria-label="Property group"><form:option name="GroupURI"/></select><br/>
         <i>for grouping properties on individual pages</i><br/>
 	</td>
 </tr>
@@ -24,11 +24,11 @@
 		<b>Ontology</b><br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-				<select name="Namespace" disabled="disabled"><form:option name="Namespace"/></select><br/>
+				<select name="Namespace" aria-label="Ontology" disabled="disabled"><form:option name="Namespace"/></select><br/>
         	    <i>Edit via "change URI" on previous screen</i>
 			</c:when>
 			<c:otherwise>
-				<br/><select name="Namespace"><form:option name="Namespace"/></select>
+				<br/><select name="Namespace" aria-label="Ontology"><form:option name="Namespace"/></select>
 			</c:otherwise>
 		</c:choose>
 	</td>
@@ -36,11 +36,11 @@
 		<b>Internal name*</b> (RDF local name)<br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-        	    <input type="text" class="fullWidthInput" disabled="disabled" name="LocalName" value="<form:value name='LocalName'/>" /><br/>
+        	    <input type="text" class="fullWidthInput" disabled="disabled" name="LocalName" aria-label="Internal name" value="<form:value name='LocalName'/>" /><br/>
         		<i>Edit via "change URI"</i>
         	</c:when>
         	<c:otherwise>
-        	    <input type="text" class="fullWidthInput" name="LocalName" value="<form:value name="LocalName"/>" /><br/>
+        	    <input type="text" class="fullWidthInput" name="LocalName" aria-label="Internal name" value="<form:value name="LocalName"/>" /><br/>
         	        <i>must be valid XML without spaces; by</i><br/>
         	        <i>convention use camel case with no initial capital</i><br/>
 			</c:otherwise>
@@ -52,7 +52,7 @@
 	</td>
     <td style="vertical-align:top;" valign="top" colspan="2">
         <b>Label for public display</b><br/>
-        <input type="text" class="fullWidthInput" name="DomainPublic" value="<form:value name="DomainPublic"/>" maxlength="80" />
+        <input type="text" class="fullWidthInput" name="DomainPublic" aria-label="Label for public display" value="<form:value name="DomainPublic"/>" maxlength="80" />
         <c:set var="DomainPublicError"><form:error name="DomainPublic"/></c:set>
         <c:if test="${!empty DomainPublicError}">
             <span class="notice"><c:out value="${DomainPublicError}"/></span>
@@ -65,11 +65,11 @@
         <b>Inverse property ontology</b><br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-				<select name="NamespaceInverse" disabled="disabled"><form:option name="NamespaceInverse"/></select><br/>
+				<select name="NamespaceInverse" aria-label="Inverse property ontology" disabled="disabled"><form:option name="NamespaceInverse"/></select><br/>
         	    <i>Edit via "change URI"</i><br/>
 			</c:when>
 			<c:otherwise>
-				<select name="NamespaceInverse"><form:option name="NamespaceInverse"/></select>
+				<select name="NamespaceInverse" aria-label="Inverse property ontology"><form:option name="NamespaceInverse"/></select>
 			</c:otherwise>
 		</c:choose>
 	</td>
@@ -77,11 +77,11 @@
 		<b>Inverse internal name</b><br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-        	    <input type="text" class="fullWidthInput" disabled="disabled" name="LocalNameInverse" value="<form:value name="LocalNameInverse"/>" /><br/>
+        	    <input type="text" class="fullWidthInput" disabled="disabled" name="LocalNameInverse" aria-label="Inverse internal name" value="<form:value name="LocalNameInverse"/>" /><br/>
         	    <i>Edit via "change URI"</i><br/>
 			</c:when>
 			<c:otherwise>
-			    <input type="text" class="fullWidthInput" name="LocalNameInverse" value="<form:value name="LocalNameInverse"/>" /><br/>
+			    <input type="text" class="fullWidthInput" name="LocalNameInverse" aria-label="Inverse internal name" value="<form:value name="LocalNameInverse"/>" /><br/>
 				<i>must be a valid XML name without spaces; by</i><br/>
 				<i>convention use camel case with no initial capital</i><br/>
 			</c:otherwise>
@@ -93,7 +93,7 @@
 	</td>
     <td valign="top" style="vertical-align:top;" colspan="1">
         <b>Inverse label</b><br/>
-        <input type="text" class="fullWidthInput" name="RangePublic" value="<form:value name="RangePublic"/>" maxlength="80" /><br/>
+        <input type="text" class="fullWidthInput" name="RangePublic" aria-label="Inverse label" value="<form:value name="RangePublic"/>" maxlength="80" /><br/>
         <br/>
         <c:set var="RangePublicError"><form:error name="RangePublic"/></c:set>
         <c:if test="${!empty RangePublicError}">
@@ -106,11 +106,11 @@
 <tr class="editformcell">
     <td valign="top" colspan="2">
         <b>Domain class</b><br />
-        <select name="DomainVClassURI"><form:option name="DomainVClassURI"/></select>
+        <select name="DomainVClassURI" aria-label="Domain class"><form:option name="DomainVClassURI"/></select>
     </td>
     <td valign="top" colspan="2">
         <b>Range class</b><br />
-        <select name="RangeVClassURI" ><form:option name="RangeVClassURI"/></select>
+        <select name="RangeVClassURI" aria-label="Range class" ><form:option name="RangeVClassURI"/></select>
     </td>
 </tr>
 <tr><td colspan="5"><hr class="formDivider"/></td></tr>
@@ -119,19 +119,19 @@
         <b>Make this property be:</b><br/><br/>
         <c:choose>
             <c:when test="${transitive}">
-                <input name="Transitive" type="checkbox" value="TRUE" checked="checked"/>transitive
+                <input name="Transitive" aria-label="transitive" type="checkbox" value="TRUE" checked="checked"/>transitive
             </c:when>
             <c:otherwise>
-                <input name="Transitive" type="checkbox" value="TRUE"/>transitive
+                <input name="Transitive" aria-label="transitive" type="checkbox" value="TRUE"/>transitive
             </c:otherwise>
         </c:choose>
         <span class="checkboxSpacer">&nbsp;</span>
             <c:choose>
                <c:when test="${symmetric}">
-                   <input name="Symmetric" type="checkbox" value="TRUE" checked="checked"/> symmetric
+                   <input name="Symmetric" aria-label="symmetric" type="checkbox" value="TRUE" checked="checked"/> symmetric
                </c:when>
                <c:otherwise>
-                   <input name="Symmetric" type="checkbox" value="TRUE"/> symmetric
+                   <input name="Symmetric" aria-label="symmetric" type="checkbox" value="TRUE"/> symmetric
                </c:otherwise>
            </c:choose>
     </td>
@@ -139,19 +139,19 @@
         <br/><br/>
         <c:choose>
             <c:when test="${functional}">
-                <input name="Functional" type="checkbox" value="TRUE" checked="checked"/> functional
+                <input name="Functional" aria-label="functional" type="checkbox" value="TRUE" checked="checked"/> functional
             </c:when>
             <c:otherwise>
-                <input name="Functional" type="checkbox" value="TRUE"/> functional
+                <input name="Functional" aria-label="functional" type="checkbox" value="TRUE"/> functional
             </c:otherwise>
         </c:choose>
         <span class="checkboxSpacer">&nbsp;</span>
         <c:choose>
             <c:when test="${inverseFunctional}">
-                <input name="InverseFunctional" type="checkbox" value="TRUE" checked="checked"/> inverse functional
+                <input name="InverseFunctional" aria-label="inverse functional" type="checkbox" value="TRUE" checked="checked"/> inverse functional
             </c:when>
             <c:otherwise>
-                <input name="InverseFunctional" type="checkbox" value="TRUE"/> inverse functional
+                <input name="InverseFunctional" aria-label="inverse functional" type="checkbox" value="TRUE"/> inverse functional
             </c:otherwise>
         </c:choose>
     </td>
@@ -160,7 +160,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="5">
 		<b>Public Description</b> for front-end users, as it will appear on editing forms<br/>
-	    <textarea class="matchingInput" name="PublicDescription"><form:value name="PublicDescription"/></textarea>
+	    <textarea class="matchingInput" name="PublicDescription" aria-label="Public Description"><form:value name="PublicDescription"/></textarea>
         <c:set var="PublicDescriptionError"><form:error name="PublicDescription"/></c:set>
         <c:if test="${!empty PublicDescriptionError}">
             <span class="notice"><c:out value="${PublicDescriptionError}"/></span>
@@ -171,7 +171,7 @@
 <tr class="editformcell">
     <td valign="top" colspan="5">
         <b>Example</b> for ontology editors<br/>
-        <input type="text" class="fullWidthInput" name="Example" value="<form:value name="Example"/>" />
+        <input type="text" class="fullWidthInput" name="Example" aria-label="Example" value="<form:value name="Example"/>" />
             <c:set var="ExampleError"><form:error name="Example"/></c:set>
             <c:if test="${!empty ExampleError}">
                 <span class="notice"><c:out value="${ExampleError}"/></span>
@@ -181,7 +181,7 @@
 <tr class="editformcell">
     <td valign="top" colspan="5">
         <b>Description</b> for ontology editors<br/>
-        <textarea class="matchingInput" name="Description" style="width:90%;"><form:value name="Description"/></textarea>
+        <textarea class="matchingInput" name="Description" aria-label="Description" style="width:90%;"><form:value name="Description"/></textarea>
         <c:set var="DescriptionError"><form:error name="Description"/></c:set>
         <c:if test="${!empty DescriptionError}">
             <span class="notice"><c:out value="${DescriptionError}"/></span>
@@ -225,7 +225,7 @@
 							type="checkbox" name="propertySuppressionNotRelated${operationLowercase}Roles"
 							value="${role.uri}" ${role.granted?'checked':''}
 							${role.enabled?'':'disabled'} />
-						<label class="inline" for="${operationLowercase}${role.label}">${role.label}</label>
+						<label class="inline" for="propertySuppressionNotRelated${operationLowercase}${role.label}">${role.label}</label>
 					</c:forEach>
 				</td>
 			</tr>
@@ -242,7 +242,7 @@
 <tr class="editformcell">
     <td valign="top" colspan="1">
         <b>Display tier</b> for this property<br/>
-        <input type="text" class="shortInput" name="DomainDisplayTier" value="<form:value name="DomainDisplayTier"/>" /><br/>
+        <input type="text" class="shortInput" name="DomainDisplayTier" aria-label="Display tier for this property" value="<form:value name="DomainDisplayTier"/>" /><br/>
             <i><b>lower</b> numbers display first</i><br/>
         <c:set var="DomainDisplayTierError"><form:error name="DomainDisplayTier"/></c:set>
         <c:if test="${!empty DomainDisplayTierError}">
@@ -251,7 +251,7 @@
     </td>
     <td valign="top" colspan="2">
         <b>Display tier</b> for inverse property<br/>
-        <input type="text" class="shortInput" name="RangeDisplayTier" value="<form:value name="RangeDisplayTier"/>" /><br/>
+        <input type="text" class="shortInput" name="RangeDisplayTier" aria-label="Display tier for inverse property" value="<form:value name="RangeDisplayTier"/>" /><br/>
         <i><b>lower</b> numbers display first</i><br/>
         <c:set var="RangeDisplayTierError"><form:error name="RangeDisplayTier"/></c:set>
         <c:if test="${!empty RangeDisplayTierError}">
@@ -262,10 +262,10 @@
         When displaying related individuals from different classes,<br/>
         <c:choose>
             <c:when test="${collateBySubclass}">
-                <input name="CollateBySubclass" type="checkbox" value="TRUE" checked="checked"/>collate by subclass
+                <input name="CollateBySubclass" aria-label="collate by subclass" type="checkbox" value="TRUE" checked="checked"/>collate by subclass
             </c:when>
             <c:otherwise>
-                <input name="CollateBySubclass" type="checkbox" value="TRUE"/>collate by subclass
+                <input name="CollateBySubclass" aria-label="collate by subclass" type="checkbox" value="TRUE"/>collate by subclass
             </c:otherwise>
         </c:choose>
     </td>
@@ -273,7 +273,7 @@
 <tr class="editformcell" >
 	<td valign="top" colspan="2" style="padding-top:25px">
 		<b>Display limit</b> for this property<br/>
-		<input type="text" class="shortInput" name="DomainDisplayLimit" value="<form:value name="DomainDisplayLimit"/>"/>
+		<input type="text" class="shortInput" name="DomainDisplayLimit" aria-label="Display limit for this property" value="<form:value name="DomainDisplayLimit"/>"/>
         <c:set var="DomainDisplayLimitError"><form:error name="DomainDisplayLimit"/></c:set>
         <c:if test="${!empty DomainDisplayLimitError}">
             <span class="notice"><c:out value="${DomainDisplayLimitError}"/></span>
@@ -281,7 +281,7 @@
 	</td>
 	<td valign="top" colspan="2">
 		<b>Display limit</b> for inverse property<br/>
-		<input type="text" class="shortInput" name="RangeDisplayLimit" value="<form:value name="RangeDisplayLimit"/>"/>
+		<input type="text" class="shortInput" name="RangeDisplayLimit" aria-label="Display limit for inverse property" value="<form:value name="RangeDisplayLimit"/>"/>
         <c:set var="RangeDisplayLimitError"><form:error name="RangeDisplayLimit"/></c:set>
         <c:if test="${!empty RangeDisplayLimitError}">
             <span class="notice"><c:out value="${RangeDisplayLimitError}"/></span>
@@ -300,7 +300,7 @@
     </td>
     <td valign="top" colspan="3">
         <b>Sort direction</b> for related individuals, alphabetically by their name (rdfs:label)<br/>
-        <input type="text" class="shortInput" name="DomainEntitySortDirection" value="<form:value name="DomainEntitySortDirection"/>" /><br/>
+        <input type="text" class="shortInput" name="DomainEntitySortDirection" aria-label="Sort direction" value="<form:value name="DomainEntitySortDirection"/>" /><br/>
         <i>blank for ascending, &quot;desc&quot; for descending</i><br/>
         <i><b>Note:</b> will be ignored if a custom list view has been configured for this property</i><br/>
         <c:set var="DomainEntitySortDirectionError"><form:error name="DomainEntitySortDirection"/></c:set>
@@ -315,10 +315,10 @@
     	Select related individuals from existing choices?<br/>
        	<c:choose>
             <c:when test="${selectFromExisting}">
-    	       	<input name="SelectFromExisting" type="checkbox" value="TRUE" checked="checked"/>provide selection
+    	       	<input name="SelectFromExisting" aria-label="provide selection" type="checkbox" value="TRUE" checked="checked"/>provide selection
             </c:when>
             <c:otherwise>
-               	<input name="SelectFromExisting" type="checkbox" value="TRUE"/>provide selection
+               	<input name="SelectFromExisting" aria-label="provide selection" type="checkbox" value="TRUE"/>provide selection
             </c:otherwise>
         </c:choose>
     </td>
@@ -326,16 +326,16 @@
     	Allow creating new related individuals?<br/>
        	<c:choose>
             <c:when test="${offerCreateNewOption}">
-    	       	<input name="OfferCreateNewOption" type="checkbox" value="TRUE" checked="checked"/>offer create option
+    	       	<input name="OfferCreateNewOption" aria-label="offer create option" type="checkbox" value="TRUE" checked="checked"/>offer create option
             </c:when>
             <c:otherwise>
-               	<input name="OfferCreateNewOption" type="checkbox" value="TRUE"/>offer create option
+               	<input name="OfferCreateNewOption" aria-label="offer create option" type="checkbox" value="TRUE"/>offer create option
             </c:otherwise>
         </c:choose>
     </td>
     <td valign="top" colspan="2">
         <b>Custom entry form</b><br/>
-        <input type="text" class="fullWidthInput" name="CustomEntryForm" value="<form:value name="CustomEntryForm"/>" />
+        <input type="text" class="fullWidthInput" name="CustomEntryForm" aria-label="Custom entry form" value="<form:value name="CustomEntryForm"/>" />
             <c:set var="CustomEntryFormError"><form:error name="CustomEntryForm"/></c:set>
             <c:if test="${!empty CustomEntryFormError}">
                 <span class="notice"><c:out value="${CustomEntryFormError}"/></span>

@@ -38,8 +38,8 @@
 		</form>
         <form action="listDataPropertyStatements" method="get">
         	<input type="hidden" name="propertyURI" value="${datatypeProperty.URI}"/>
-        	from <input type="text" name="startAt" value="1" size="2"/>
-        	to <input type="text" name="endAt" value="50" size="3"/><br/>
+        	from <input type="text" name="startAt" value="1" size="2" aria-label="Show statements from"/>
+        	to <input type="text" name="endAt" value="50" size="3" aria-label="Show statements to"/><br/>
         	<input type="submit" class="form-button" value="Show Examples of Statements Using This Property"/>
         </form>
 	</td>

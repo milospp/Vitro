@@ -37,7 +37,7 @@
     <form id="newIndividual" class="customForm noIE67" action="${submitUrl}">
 
       <p>
-          <label for="name">${i18n().name} ${requiredHint}</label>
+          <label for="label">${i18n().name} ${requiredHint}</label>
           <input size="30"  type="text" id="label" name="label" value="" />
       </p>
 

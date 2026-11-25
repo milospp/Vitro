@@ -10,7 +10,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="2">
 		<b>Public label</b><br/>
-		<input type="text" class="fullWidthInput" name="PublicName" value="<form:value name="PublicName"/>"/>
+		<input type="text" class="fullWidthInput" name="PublicName" aria-label="Public label" value="<form:value name="PublicName"/>"/>
         <c:set var="PublicNameError"><form:error name="PublicName"/></c:set>
         <c:if test="${!empty PublicNameError}">
             <span class="notice"><c:out value="${PublicNameError}"/></span>
@@ -18,7 +18,7 @@
 	</td>
 	<td valign="top" colspan="2">
 		<b>Property group</b><br/>
-		<select name="GroupURI">
+		<select name="GroupURI" aria-label="Property group">
 		    <form:option name="GroupURI"/>
 		</select><br/>
 		<i>for grouping properties on individual pages</i><br/>
@@ -31,13 +31,13 @@
 		<b>Ontology</b><br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-				<select name="Namespace" disabled="disabled">
+				<select name="Namespace" aria-label="Ontology" disabled="disabled">
 					<form:option name="Namespace"/>
 				</select><br/>
         		<i>Edit via "change URI" on previous screen</i><br/>
 			</c:when>
 			<c:otherwise>
-				<select name="Namespace">
+				<select name="Namespace" aria-label="Ontology">
 					<form:option name="Namespace"/>
 				</select><br/>
 			</c:otherwise>
@@ -47,11 +47,11 @@
 		<b>Internal name*</b> (RDF local name)<br/>
         <c:choose>
         	<c:when test="${_action eq 'update'}">
-        		<input type="text" class="fullWidthInput" name="LocalName" value="<form:value name="LocalName"/>" disabled="disabled"/><br/>
+        		<input type="text" class="fullWidthInput" name="LocalName" aria-label="Internal name" value="<form:value name="LocalName"/>" disabled="disabled"/><br/>
 				<i>Edit via &quot;change URI&quot;</i><br/>
 			</c:when>
 			<c:otherwise>
-				<input type="text" class="fullWidthInput" name="LocalName" value="<form:value name="LocalName"/>"/><br/>
+				<input type="text" class="fullWidthInput" name="LocalName" aria-label="Internal name" value="<form:value name="LocalName"/>"/><br/>
 				<i>must be valid XML without spaces; by</i><br/>
 				<i>convention use camel case with no initial capital</i><br/>
 			</c:otherwise>
@@ -66,13 +66,13 @@
 <tr class="editformcell">
 	<td valign="top" colspan="2">
 		<b>Domain class</b><br/>
-		<select name="DomainClassURI">
+		<select name="DomainClassURI" aria-label="Domain class">
 			<form:option name="DomainClassURI"/>
 		</select>
 	</td>
 	<td valign="top" colspan="2">
 		<b>Range datatype</b><br/>
-		<select name="RangeDatatypeURI">
+		<select name="RangeDatatypeURI" aria-label="Range datatype">
 			<form:option name="RangeDatatypeURI"/>
 		</select><br/>
 		<i>Use &quot;untyped&quot; instead of &quot;string&quot; to allow language tags</i>
@@ -85,10 +85,10 @@
         <c:set var="functionalLabel" value=" functional"/>
         <c:choose>
              <c:when test="${functional}">
-    	         <input name="Functional" type="checkbox" value="TRUE" checked="checked"/>${functionalLabel}<br/>
+    	         <input name="Functional" aria-label="functional" type="checkbox" value="TRUE" checked="checked"/>${functionalLabel}<br/>
              </c:when>
              <c:otherwise>
-                 <input name="Functional" type="checkbox" value="TRUE"/>${functionalLabel}<br/>
+                 <input name="Functional" aria-label="functional" type="checkbox" value="TRUE"/>${functionalLabel}<br/>
              </c:otherwise>
         </c:choose>
     	<i>A &quot;functional&quot; property has at most one value for each individual</i></br>
@@ -98,7 +98,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="4">
 		<b>Public description</b> for front-end users, as it will appear on editing forms<br/>
-		<textarea class="matchingInput" name="PublicDescription"><form:value name="PublicDescription"/></textarea>
+		<textarea class="matchingInput" name="PublicDescription" aria-label="Public description"><form:value name="PublicDescription"/></textarea>
 		<c:set var="PublicDescriptionError"><form:error name="PublicDescription"/></c:set>
 		<c:if test="${!empty PublicDescriptionError}">
 			<span class="notice"><c:out value="${PublicDescriptionError}"/></span>
@@ -108,7 +108,7 @@
 <tr class="editformcell">
     <td valign="top" colspan="4">
         <b>Example</b> for ontology editors<br/>
-    	<textarea class="matchingInput" name="Example"><form:value name="Example"/></textarea>
+    	<textarea class="matchingInput" name="Example" aria-label="Example"><form:value name="Example"/></textarea>
         <c:set var="ExampleError"><form:error name="Example"/></c:set>
         <c:if test="${!empty ExampleError}">
             <span class="notice"><c:out value="${ExampleError}"/></span>
@@ -118,7 +118,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="4">
 		<b>Description</b> for ontology editors<br/>
-		<textarea class="matchingInput" name="Description"><form:value name="Description"/></textarea>
+		<textarea class="matchingInput" name="Description" aria-label="Description"><form:value name="Description"/></textarea>
         <c:set var="DescriptionError"><form:error name="Description"/></c:set>
         <c:if test="${!empty DescriptionError}">
             <span class="notice"><c:out value="${DescriptionError}"/></span>
@@ -162,7 +162,7 @@
 							type="checkbox" name="propertySuppressionNotRelated${operationLowercase}Roles"
 							value="${role.uri}" ${role.granted?'checked':''}
 							${role.enabled?'':'disabled'} />
-						<label class="inline" for="${operationLowercase}${role.label}">${role.label}</label>
+						<label class="inline" for="propertySuppressionNotRelated${operationLowercase}${role.label}">${role.label}</label>
 					</c:forEach>
 				</td>
 			</tr>
@@ -180,7 +180,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="2">
 		<b>Display tier</b> within property group<br/>
-		<input type="text" class="shortInput" name="DisplayTier" value="<form:value name="DisplayTier"/>"/>
+		<input type="text" class="shortInput" name="DisplayTier" aria-label="Display tier" value="<form:value name="DisplayTier"/>"/>
         <c:set var="DisplayTierError"><form:error name="DisplayTier"/></c:set>
         <c:if test="${!empty DisplayTierError}">
             <span class="notice"><c:out value="${DisplayTierError}"/></span>
@@ -188,7 +188,7 @@
 	</td>
 	<td valign="top" colspan="2">
 		<b>Display limit</b> before &quot;more ...&quot; button is displayed<br/>
-		<input type="text" class="shortInput" name="DisplayLimit" value="<form:value name="DisplayLimit"/>"/>
+		<input type="text" class="shortInput" name="DisplayLimit" aria-label="Display limit" value="<form:value name="DisplayLimit"/>"/>
         <c:set var="DisplayLimitError"><form:error name="DisplayLimit"/></c:set>
         <c:if test="${!empty DisplayLimitError}">
             <span class="notice"><c:out value="${DisplayLimitError}"/></span>
@@ -199,7 +199,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="2">
     	<b>Custom entry form</b><br/>
-		<input type="text" class="fullWidthInput" name="CustomEntryForm" value="<form:value name="CustomEntryForm"/>" />
+		<input type="text" class="fullWidthInput" name="CustomEntryForm" aria-label="Custom entry form" value="<form:value name="CustomEntryForm"/>" />
         <c:set var="CustomEntryFormError"><form:error name="CustomEntryForm"/></c:set>
         <c:if test="${!empty CustomEntryFormError}">
             <span class="notice"><c:out value="${CustomEntryFormError}"/></span>
@@ -208,7 +208,7 @@
 	</td>
 	<td valign="top" colspan="2">
 		<b>Rich text editing</b><br/>
-		<select name="Editing">
+		<select name="Editing" aria-label="Rich text editing">
 		    <form:option name="Editing"/>
 		</select>
 	</td>

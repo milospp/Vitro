@@ -14,7 +14,7 @@
         <#assign rangeOptionKeys = rangeOptions?keys />
         <form class="editForm" action = "${submitUrl}">
             <input type="hidden" name="editKey" id="editKey" value="${editKey}" />
-            <select id="object" name="object">
+            <select id="object" name="object" aria-label="${editConfiguration.formTitle?html}">
                 <#list rangeOptionKeys as key>
                  <option value="${key}" <#if editConfiguration.objectUri?has_content && editConfiguration.objectUri = key>selected</#if> role="option">${rangeOptions[key]}</option>
                 </#list>

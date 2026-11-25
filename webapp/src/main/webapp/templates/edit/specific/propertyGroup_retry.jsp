@@ -6,7 +6,7 @@
 <tr class="editformcell">
 	<td valign="top" colspan="3">
 		<b>Property group name</b> (max 120 characters)<br />
-		<input type="text" name="Name" value="<form:value name="Name"/>" size="50" maxlength="120" />
+		<input type="text" name="Name" aria-label="Property group name" value="<form:value name="Name"/>" size="50" maxlength="120" />
 		<c:set var="NameError"><form:error name="Name"/></c:set>
         <c:if test="${!empty NameError}">
             <span class="notice"><c:out value="${NameError}"/></span>
@@ -16,12 +16,12 @@
 <tr class="editformcell">
 	<td valign="top" colspan="3">
 		<b>Public description</b> (short explanation for dashboard)<br />
-		<input type="text" name="PublicDescription" value="<form:value name="PublicDescription"/>" size="80" maxlength="255" />
+		<input type="text" name="PublicDescription" aria-label="Public description" value="<form:value name="PublicDescription"/>" size="80" maxlength="255" />
 	</td>
 </tr>
 <tr class="editformcell">
 	<td valign="top" colspan="3">
 		<b>Display rank </b> (lower number displays higher)<br />
-		<input type="text" name="DisplayRank" value="<form:value name="DisplayRank"/>" size="3" maxlength="11" />
+		<input type="text" name="DisplayRank" aria-label="Display rank" value="<form:value name="DisplayRank"/>" size="3" maxlength="11" />
 	</td>
 </tr>

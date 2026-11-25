@@ -168,23 +168,23 @@
 <!-- This is hidden and a copy gets put into the table when editing happens  -->
         	<div id="propeditdiv" style="display:none" class ="form-editingRow">
             	<table width="100%">
-                	<tr><td>Predicate:</td>
+                	<tr><td><label for="propertyList">Predicate:</label></td>
                     	<td colspan="9">
-                            <select id="propertyList" class="form-item" aria-label="Predicate"
+                            <select id="propertyList" class="form-item"
                                     onchange="fillRangeVClassList();">
                             	<option value="">select property</option>
                             </select>
                         </td>
                     </tr>
-                	<tr><td>Object Class:</td>
+                	<tr><td><label for="vClassList">Object Class:</label></td>
                     	<td colspan="9">
-                            <select id="vClassList" class="form-item" aria-label="Object Class" onchange="fillEntsList();">
+                            <select id="vClassList" class="form-item" onchange="fillEntsList();">
                             	<option value="">select type</option>
                             </select>
                         </td>
                 	</tr>
-                	<tr><td>Object Individual:</td>
-                        <td colspan="9"><select id="entitiesList" class="form-item" aria-label="Object Individual"><option>select individual</option></select></td>
+                	<tr><td><label for="entitiesList">Object Individual:</label></td>
+                        <td colspan="9"><select id="entitiesList" class="form-item"><option>select individual</option></select></td>
                 	</tr>
 
 

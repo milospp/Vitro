@@ -75,7 +75,7 @@
     <section id="floatRight">
         <div id="rightSide" <#if selectedTemplateType="selfContained">style="display:none;"</#if>>
             <section id="addPageOne" role="region" >
-            <label for="contentType">${i18n().content_type}<span class="requiredHint"> *</span></label>
+            <label for="typeSelect">${i18n().content_type}<span class="requiredHint"> *</span></label>
             <select id="typeSelect"  name="typeSelect" >
                 <option value="" selected="selected">${i18n().select_type}</option>
                 <option value="browseClassGroup">${i18n().browse_class_group}</option>
@@ -98,25 +98,25 @@
     <!--Information for page or menu item level-->
     <div id="leftSide">
         <section id="pageDetails" role="region" >
-            <label for="page-name">${i18n().title_capitalized}<span class="requiredHint"> *</span></label>
+            <label for="pageName">${i18n().title_capitalized}<span class="requiredHint"> *</span></label>
             <input id="pageName" type="text" name="pageName" value="${pageName!''}" />
             <label for="pretty-url">${i18n().pretty_url}<span class="requiredHint"> *</span></label>
-            <input type="text" name="prettyUrl" value="${prettyUrl!''}" />
+            <input type="text" id="pretty-url" name="prettyUrl" value="${prettyUrl!''}" />
             <p class="note">${i18n().begin_with_slash_no_example} <br />${i18n().slash_example}</p>
             <p id="templatePTag">${i18n().template_capitalized}<span class="requiredHint"> *</span></p>
-            <input type="radio" class="default-template" name="selectedTemplate" value="default" <#if selectedTemplateType = "default">checked="checked"</#if> role="radio" />
+            <input type="radio" id="default" class="default-template" name="selectedTemplate" value="default" <#if selectedTemplateType = "default">checked="checked"</#if> role="radio" />
             <label class="inline" for="default"> ${i18n().default}</label>
             <br />
-            <input type="radio" name="selectedTemplate" class="custom-template" value="custom" <#if selectedTemplateType = "custom">checked="checked"</#if> />
+            <input type="radio" id="custom" name="selectedTemplate" class="custom-template" value="custom" <#if selectedTemplateType = "custom">checked="checked"</#if> />
             <label class="inline" for="custom"> ${i18n().custom_template_requiring_content}</label>
             <br /><div id="selfContainedDiv">
-            <input type="radio" name="selectedTemplate" class="selfContained-template" value="selfContained" <#if selectedTemplateType = "selfContained">checked="checked"</#if> />
+            <input type="radio" id="selfContained" name="selectedTemplate" class="selfContained-template" value="selfContained" <#if selectedTemplateType = "selfContained">checked="checked"</#if> />
             <label class="inline" for="selfContained"> ${i18n().custom_template_containing_content}</label></div>
             <section id="custom-template" <#if selectedTemplateType ="default">class="hidden" </#if>role="region">
-                <input type="text" name="customTemplate" value="${customTemplate!''}" size="33" /><span class="requiredHint"> *</span>
+                <input type="text" name="customTemplate" value="${customTemplate!''}" size="33" aria-label="${i18n().template_capitalized}" /><span class="requiredHint"> *</span>
                 <input type="hidden" name="selfContainedTemplate" value="${selfContainedTemplate!''}"/>
             </section>
-            <p id="menuCheckboxPTag"><input id="menuCheckbox" type="checkbox" name="menuCheckbox"
+            <p id="menuCheckboxPTag"><input id="menuCheckbox" type="checkbox" name="menuCheckbox" aria-label="${i18n().a_menu_page}"
             <#if (menuAction="Edit" && menuItem?has_content) || (menuAction="Add" && addMenuItem = "true")>checked="checked"</#if>
             > ${i18n().a_menu_page}</p>
             <section id="menu" role="region"
@@ -127,7 +127,7 @@
             class="showMenuSection"
             </#if>
             >
-                <label for="default">${i18n().menu_item_name}</label>
+                <label for="menuLinkText">${i18n().menu_item_name}</label>
 
                 <input type="hidden" id="menuItem" name="menuItem" value="${menuItem!''}" />
                 <input type="text" id="menuLinkText" name="menuLinkText" value="${menuLinkText!''}" size="28" />
