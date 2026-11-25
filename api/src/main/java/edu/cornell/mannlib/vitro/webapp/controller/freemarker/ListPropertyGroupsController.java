@@ -22,6 +22,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +47,7 @@ public class ListPropertyGroupsController extends FreemarkerHttpServlet {
         try {
 
             body.put("displayOption", "group");
-            body.put("pageTitle", "Property Groups");
+            body.put("pageTitle", I18n.text(vreq, "property_groups"));
 
             PropertyGroupDao dao = vreq.getUnfilteredWebappDaoFactory().getPropertyGroupDao();
 

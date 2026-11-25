@@ -21,6 +21,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.UrlBuilder;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.RedirectResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -58,6 +59,11 @@ public class AdminLoginController extends FreemarkerHttpServlet {
 	@Override
 	protected AuthorizationRequest requiredActions(VitroRequest vreq) {
 		return AuthorizationRequest.AUTHORIZED; // No requirements to use this page.
+	}
+
+	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		return I18n.text(vreq, "internal_login");
 	}
 
 	@Override

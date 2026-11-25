@@ -15,6 +15,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -33,7 +34,7 @@ public class ShowConfiguration extends FreemarkerHttpServlet {
 		Map<String, Object> body = new HashMap<String, Object>();
 		body.put("configurationProperties", getConfigurationProperties(vreq));
 		body.put("javaSystemProperties", getSystemProperties());
-		body.put("title", "Configuration settings");
+		body.put("title", I18n.text(vreq, "configuration_settings"));
 		return new TemplateResponseValues("admin-showConfiguration.ftl", body);
 	}
 

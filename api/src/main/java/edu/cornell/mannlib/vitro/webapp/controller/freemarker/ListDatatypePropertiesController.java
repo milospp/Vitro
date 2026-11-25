@@ -26,6 +26,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.DataPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.DatatypeDao;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 import edu.cornell.mannlib.vitro.webapp.web.URLEncoder;
 
@@ -50,7 +51,7 @@ public class ListDatatypePropertiesController extends FreemarkerHttpServlet {
         try {
 
             body.put("displayOption", "all");
-            body.put("pageTitle", "All Data Properties");
+            body.put("pageTitle", I18n.text(vreq, "all_data_properties"));
             body.put("propertyType", "data");
 
             String noResultsMsgStr = "No data properties found";

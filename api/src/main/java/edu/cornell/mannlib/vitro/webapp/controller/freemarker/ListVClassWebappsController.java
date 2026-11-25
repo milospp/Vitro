@@ -23,6 +23,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.PropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.WebappDaoFactory;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +47,7 @@ public class ListVClassWebappsController extends FreemarkerHttpServlet {
         Map<String, Object> body = new HashMap<String, Object>();
 
         body.put("displayOption", "all");
-        body.put("pageTitle", "All Classes");
+        body.put("pageTitle", I18n.text(vreq, "all_classes"));
 
 		if ( vreq.getParameter("propertyURI") != null ) {
 			body.put("propertyURI", vreq.getParameter("propertyURI"));

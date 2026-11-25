@@ -27,6 +27,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ContextModelAccess;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.RequestModelAccess;
@@ -112,6 +113,11 @@ public class ShowSourcesController extends FreemarkerHttpServlet {
 	@Override
 	protected AuthorizationRequest requiredActions(VitroRequest vreq) {
 		return AuthorizationRequest.AUTHORIZED;
+	}
+
+	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		return I18n.text(vreq, "current_rdf_data_structures");
 	}
 
 	@Override

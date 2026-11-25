@@ -26,6 +26,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.OntologyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.WebappDaoFactory;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 
 import javax.servlet.annotation.WebServlet;
@@ -65,10 +66,10 @@ public class ShowClassHierarchyController extends FreemarkerHttpServlet {
         body.put("displayOption", displayOption);
         boolean inferred = ( displayOption.equals("inferred") );
         if ( inferred ) {
-            body.put("pageTitle", "Inferred Class Hierarchy");
+            body.put("pageTitle", I18n.text(vreq, "inferred_class_hierarchy"));
         }
         else {
-            body.put("pageTitle", "Asserted Class Hierarchy");
+            body.put("pageTitle", I18n.text(vreq, "asserted_class_hierarchy"));
         }
 
         if (!inferred) {

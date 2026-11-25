@@ -31,6 +31,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.authenticate.Authenticator;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 
 /**
  * Show a summary of who is logged in and how they are to be treated by the
@@ -56,7 +57,7 @@ public class ShowAuthController extends FreemarkerHttpServlet {
 		body.put("policies", PolicyStore.getInstance().getShortUris());
 		body.put("matchingProperty", getMatchingProperty(vreq));
 		body.put("authenticator", Authenticator.getInstance(vreq));
-		body.put("title", "Authorization Info");
+		body.put("title", I18n.text(vreq, "authorization_info"));
 
 		return new TemplateResponseValues("admin-showAuth.ftl", body);
 	}

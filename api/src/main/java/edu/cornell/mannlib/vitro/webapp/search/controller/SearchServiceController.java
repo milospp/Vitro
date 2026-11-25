@@ -25,6 +25,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServ
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ExceptionResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modules.searchIndexer.SearchIndexer;
 
 /**
@@ -46,6 +47,11 @@ public class SearchServiceController extends FreemarkerHttpServlet {
 	 * Handle the different actions. If not specified, the default action is to
 	 * show the help page.
 	 */
+	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		return I18n.text(vreq, "search_web_service");
+	}
+
 	@Override
 	protected ResponseValues processRequest(VitroRequest req) {
 		try {

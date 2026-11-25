@@ -21,6 +21,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServ
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.UrlBuilder;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFServiceException;
 
 /**
@@ -116,7 +117,7 @@ public class DumpRestoreController extends FreemarkerHttpServlet {
 			bodyMap.put("tripleCount", tripleCount);
 		}
 
-		bodyMap.put("title", "Dump or Restore the knowledge base");
+		bodyMap.put("title", I18n.text(vreq, "dump_restore_knowledge_base"));
 
 		return new TemplateResponseValues(TEMPLATE_NAME, bodyMap);
 	}

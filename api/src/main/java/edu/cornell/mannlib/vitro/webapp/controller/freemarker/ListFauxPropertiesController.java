@@ -26,6 +26,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.DataPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.FauxPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.ObjectPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -59,9 +60,9 @@ public class ListFauxPropertiesController extends FreemarkerHttpServlet {
             body.put("displayOption", displayOption);
 
             if (displayOption.equals("listing")) {
-                body.put("pageTitle", "Faux Property Listing");
+                body.put("pageTitle", I18n.text(vreq, "faux_property_listing"));
             } else {
-                body.put("pageTitle", "Faux Properties by Base Property");
+                body.put("pageTitle", StringUtils.capitalize(I18n.text(vreq, "faux_property_by_base")));
             }
             List<ObjectProperty> objectProps = getOPDao(vreq).getRootObjectProperties();
             List<DataProperty> dataProps = getDPDao(vreq).getRootDataProperties();

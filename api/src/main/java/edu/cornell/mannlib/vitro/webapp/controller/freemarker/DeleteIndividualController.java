@@ -37,6 +37,7 @@ import static edu.cornell.mannlib.vitro.webapp.dao.DisplayVocabulary.HAS_DELETE_
 
 import edu.cornell.mannlib.vitro.webapp.dao.jena.event.BulkUpdateEvent;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.N3EditUtils;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelNames;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.ChangeSet;
@@ -66,6 +67,11 @@ public class DeleteIndividualController extends FreemarkerHttpServlet {
 	@Override
 	protected AuthorizationRequest requiredActions(VitroRequest vreq) {
 		return SimplePermission.DO_FRONT_END_EDITING.ACTION;
+	}
+
+	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		return I18n.text(vreq, "delete_individual");
 	}
 
 	protected ResponseValues processRequest(VitroRequest vreq) {

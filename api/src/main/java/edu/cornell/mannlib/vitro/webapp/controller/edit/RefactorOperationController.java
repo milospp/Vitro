@@ -55,6 +55,7 @@ import edu.cornell.mannlib.vitro.webapp.auth.permissions.SimplePermission;
 import edu.cornell.mannlib.vitro.webapp.controller.Controllers;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.dao.jena.event.EditEvent;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import edu.cornell.mannlib.vitro.webapp.servlet.setup.FileGraphSetup;
 
@@ -73,7 +74,7 @@ public class RefactorOperationController extends BaseEditController {
         }
 		VitroRequest vreq = new VitroRequest(request);
 
-        request.setAttribute("title","Check Datatype Properties");
+        request.setAttribute("title",I18n.text(request, "check_datatype_properties"));
         request.setAttribute("css", "<link rel=\"stylesheet\" type=\"text/css\" href=\""+vreq.getAppBean().getThemeDir()+"css/edit.css\"/>");
 
         OntModel ontModel = ModelAccess.on(getServletContext()).getOntModel(FULL_ASSERTIONS);

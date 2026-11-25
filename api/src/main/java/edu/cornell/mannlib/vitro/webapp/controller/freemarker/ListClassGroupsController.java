@@ -19,6 +19,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassGroupDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 import edu.cornell.mannlib.vitro.webapp.web.URLEncoder;
 
@@ -44,7 +45,7 @@ public class ListClassGroupsController extends FreemarkerHttpServlet {
         try {
 
             body.put("displayOption", "group");
-            body.put("pageTitle", "Class Groups");
+            body.put("pageTitle", I18n.text(vreq, "class_groups"));
 
             VClassGroupDao dao = vreq.getUnfilteredWebappDaoFactory().getVClassGroupDao();
 

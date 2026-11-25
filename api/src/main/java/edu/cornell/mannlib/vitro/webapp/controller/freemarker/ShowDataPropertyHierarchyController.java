@@ -25,6 +25,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.DataPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.DatatypeDao;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 import edu.cornell.mannlib.vitro.webapp.web.URLEncoder;
 
@@ -69,10 +70,10 @@ public class ShowDataPropertyHierarchyController extends FreemarkerHttpServlet {
             body.put("displayOption", displayOption);
 
             if ( displayOption.equals("all") ) {
-                body.put("pageTitle", "All Data Properties");
+                body.put("pageTitle", I18n.text(vreq, "all_data_properties"));
             }
             else {
-                body.put("pageTitle", "Data Property Hierarchy");
+                body.put("pageTitle", I18n.text(vreq, "data_property_hierarchy"));
             }
 
             body.put("propertyType", "data");

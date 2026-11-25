@@ -7008,3 +7008,90 @@ uil-data:confirm_remove_model.Vitro
         uil:hasKey       "confirm_remove_model" ;
         uil:hasPackage   "Vitro-languages" .
 
+uil-data:all_data_properties.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "All Data Properties"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "all_data_properties" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:all_object_properties.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "All Object Properties"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "all_object_properties" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:dump_restore_knowledge_base.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Dump or Restore the knowledge base"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "dump_restore_knowledge_base" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:audit_history.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Audit history"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "audit_history" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:authorization_info.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Authorization Info"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "authorization_info" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:configuration_settings.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Configuration settings"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "configuration_settings" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:current_rdf_data_structures.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Current RDF Data Structures"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "current_rdf_data_structures" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:search_web_service.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Search Web Service"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "search_web_service" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:delete_individual.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Delete Individual"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "delete_individual" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:delete_property.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Delete Property"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "delete_property" ;
+        uil:hasPackage   "Vitro-languages" .
+
+uil-data:check_datatype_properties.Vitro
+        rdf:type         owl:NamedIndividual ;
+        rdf:type         uil:UILabel ;
+        rdfs:label       "Check Datatype Properties"@en-US ;
+        uil:hasApp       "Vitro" ;
+        uil:hasKey       "check_datatype_properties" ;
+        uil:hasPackage   "Vitro-languages" .

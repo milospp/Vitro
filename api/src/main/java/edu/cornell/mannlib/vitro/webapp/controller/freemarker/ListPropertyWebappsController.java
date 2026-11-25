@@ -30,6 +30,7 @@ import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyInstanceDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VitroVocabulary;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 import edu.cornell.mannlib.vitro.webapp.web.URLEncoder;
 
@@ -53,7 +54,7 @@ public class ListPropertyWebappsController extends FreemarkerHttpServlet {
         try {
 
             body.put("displayOption", "all");
-            body.put("pageTitle", "All Object Properties");
+            body.put("pageTitle", I18n.text(vreq, "all_object_properties"));
             body.put("propertyType", "object");
 
             String noResultsMsgStr = "No object properties found";

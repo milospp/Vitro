@@ -26,6 +26,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.UrlBuilder;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
 import edu.cornell.mannlib.vitro.webapp.dao.UserAccountsDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -138,7 +139,7 @@ public class AuditController extends FreemarkerHttpServlet {
         body.put("listAddedStatements", new ListAddedStatementsMethod());
         body.put("listRemovedStatements", new ListRemovedStatementsMethod());
 
-        body.put("title", "Audit history");
+        body.put("title", I18n.text(vreq, "audit_history"));
 
         // Return the default template and parameters
         return new TemplateResponseValues(TEMPLATE_DEFAULT, body);

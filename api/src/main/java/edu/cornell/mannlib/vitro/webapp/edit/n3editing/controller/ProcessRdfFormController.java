@@ -40,6 +40,7 @@ import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.ProcessRdfForm;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.RdfLiteralHash;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.ModelSelector;
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.preprocessors.LimitRemovalsToLanguage;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess;
 import edu.cornell.mannlib.vitro.webapp.modelaccess.ModelAccess.WhichService;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.RDFService;
@@ -60,6 +61,11 @@ public class ProcessRdfFormController extends FreemarkerHttpServlet{
     @Override
 	protected AuthorizationRequest requiredActions(VitroRequest vreq) {
     	return SimplePermission.DO_FRONT_END_EDITING.ACTION;
+	}
+
+	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		return I18n.text(vreq, "edit_page_title");
 	}
 
 	@Override

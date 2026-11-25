@@ -49,6 +49,17 @@ public class UserAccountsUserController extends FreemarkerHttpServlet {
 	}
 
 	@Override
+	protected String getTitle(String siteName, VitroRequest vreq) {
+		String action = vreq.getPathInfo();
+		if (ACTION_CREATE_PASSWORD.equals(action)) {
+			return I18n.text(vreq, "create_your_password");
+		} else if (ACTION_RESET_PASSWORD.equals(action)) {
+			return I18n.text(vreq, "reset_your_password");
+		}
+		return super.getTitle(siteName, vreq);
+	}
+
+	@Override
 	protected ResponseValues processRequest(VitroRequest vreq) {
 		if (log.isDebugEnabled()) {
 			dumpRequestParameters(vreq);

@@ -26,6 +26,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.Tem
 import edu.cornell.mannlib.vitro.webapp.dao.ObjectPropertyDao;
 import edu.cornell.mannlib.vitro.webapp.dao.PropertyGroupDao;
 import edu.cornell.mannlib.vitro.webapp.dao.VClassDao;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.json.JacksonUtils;
 import edu.cornell.mannlib.vitro.webapp.web.URLEncoder;
 
@@ -70,10 +71,10 @@ public class ShowObjectPropertyHierarchyController extends FreemarkerHttpServlet
             body.put("displayOption", displayOption);
 
             if ( displayOption.equals("all") ) {
-                body.put("pageTitle", "All Object Properties");
+                body.put("pageTitle", I18n.text(vreq, "all_object_properties"));
             }
             else {
-                body.put("pageTitle", "Object Property Hierarchy");
+                body.put("pageTitle", I18n.text(vreq, "object_property_hierarchy"));
             }
 
             body.put("propertyType", "object");
