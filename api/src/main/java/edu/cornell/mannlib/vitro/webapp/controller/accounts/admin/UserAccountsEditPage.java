@@ -252,6 +252,7 @@ public class UserAccountsEditPage extends UserAccountsPage {
 			body.put("showAssociation", Boolean.TRUE);
 		}
 
+		body.put("title", i18n.text("edit_account"));
 		strategy.addMoreBodyValues(body);
 
 		return new TemplateResponseValues(TEMPLATE_NAME, body);

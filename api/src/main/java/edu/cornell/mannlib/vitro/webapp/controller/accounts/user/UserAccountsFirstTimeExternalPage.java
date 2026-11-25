@@ -182,6 +182,7 @@ public class UserAccountsFirstTimeExternalPage extends UserAccountsPage {
 			body.put(errorCode, Boolean.TRUE);
 		}
 
+		body.put("title", i18n.text("first_time_login"));
 		strategy.addMoreBodyValues(body);
 
 		return new TemplateResponseValues(TEMPLATE_NAME, body);

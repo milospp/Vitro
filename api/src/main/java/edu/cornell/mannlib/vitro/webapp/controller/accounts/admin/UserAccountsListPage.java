@@ -97,6 +97,7 @@ public class UserAccountsListPage extends UserAccountsPage {
 				userAccountsModel, criteria);
 		Map<String, Object> body = buildTemplateBodyMap(selection);
 		Message.applyToBodyMap(vreq, body);
+		body.put("title", i18n.text("user_accounts"));
 		return new TemplateResponseValues(TEMPLATE_NAME, body);
 	}
 

@@ -87,6 +87,7 @@ public class ListFauxPropertiesController extends FreemarkerHttpServlet {
         } catch (Throwable t) {
             log.error(t, t);
         }
+        body.put("title", body.get("pageTitle"));
         return new TemplateResponseValues(TEMPLATE_NAME, body);
 
     }

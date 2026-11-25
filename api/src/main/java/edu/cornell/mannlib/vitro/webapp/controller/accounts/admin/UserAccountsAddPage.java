@@ -230,6 +230,7 @@ public class UserAccountsAddPage extends UserAccountsPage {
 			body.put("showAssociation", Boolean.TRUE);
 		}
 
+		body.put("title", i18n.text("add_new_account"));
 		strategy.addMoreBodyValues(body);
 
 		return new TemplateResponseValues(TEMPLATE_NAME, body);

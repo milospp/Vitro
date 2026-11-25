@@ -151,6 +151,7 @@ public class UserAccountsMyAccountPage extends UserAccountsPage {
 			body.put("lastName", userAccount.getLastName());
 			body.put("proxies", buildOriginalProxyList());
 		}
+		body.put("title", i18n.text("myAccount_heading"));
 		body.put("formUrls", buildUrlsMap());
 		body.put("myAccountUri", userAccount.getUri());
 		body.put("profileTypes", buildProfileTypesString());

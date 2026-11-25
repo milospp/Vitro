@@ -81,6 +81,7 @@ public class ManageProxiesListPage extends AbstractPageHandler {
 		log.debug("Selection: " + selection);
 
 		Map<String, Object> body = buildTemplateBodyMap(selection);
+		body.put("title", i18n.text("manage_profile_editing"));
 		return new TemplateResponseValues(TEMPLATE_NAME, body);
 	}
 

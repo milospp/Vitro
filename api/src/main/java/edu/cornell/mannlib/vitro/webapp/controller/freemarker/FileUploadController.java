@@ -135,6 +135,7 @@ public class FileUploadController extends FreemarkerHttpServlet {
 		TemplateResponseValues rv = new TemplateResponseValues(DEFAULT_TEMPLATE);
 		rv.put(PARAMETER_ACTION, vreq.getParameter(PARAMETER_ACTION));
 		rv.put(TEMPLATE_VAR_FORM_ACTION, formatRequestUrl(vreq));
+		rv.put("title", I18n.text(vreq, "file_upload_heading"));
 		if (!error.isEmpty()) {
 			rv.put(TEMPLATE_VAR_ERROR_MESSAGE, error);
 		}

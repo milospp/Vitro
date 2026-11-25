@@ -230,6 +230,7 @@ public class ForgotPasswordController extends FreemarkerHttpServlet {
         dataContext.put("emailValue", "");
         dataContext.put("contactEmailConfigured", StringUtils.isNotBlank(appBean.getContactMail()));
         dataContext.put("wrongCaptcha", false);
+        dataContext.put("title", I18n.text(vreq, "password_reset_title"));
     }
 
     /**

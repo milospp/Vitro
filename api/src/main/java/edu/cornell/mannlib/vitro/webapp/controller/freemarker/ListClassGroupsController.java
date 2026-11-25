@@ -109,6 +109,7 @@ public class ListClassGroupsController extends FreemarkerHttpServlet {
                 t.printStackTrace();
         }
 
+        body.put("title", body.get("pageTitle"));
         return new TemplateResponseValues(TEMPLATE_NAME, body);
     }
 

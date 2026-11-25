@@ -56,6 +56,7 @@ public class ShowAuthController extends FreemarkerHttpServlet {
 		body.put("policies", PolicyStore.getInstance().getShortUris());
 		body.put("matchingProperty", getMatchingProperty(vreq));
 		body.put("authenticator", Authenticator.getInstance(vreq));
+		body.put("title", "Authorization Info");
 
 		return new TemplateResponseValues("admin-showAuth.ftl", body);
 	}

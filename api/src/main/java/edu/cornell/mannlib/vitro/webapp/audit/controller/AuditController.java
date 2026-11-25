@@ -138,6 +138,8 @@ public class AuditController extends FreemarkerHttpServlet {
         body.put("listAddedStatements", new ListAddedStatementsMethod());
         body.put("listRemovedStatements", new ListRemovedStatementsMethod());
 
+        body.put("title", "Audit history");
+
         // Return the default template and parameters
         return new TemplateResponseValues(TEMPLATE_DEFAULT, body);
     }

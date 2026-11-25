@@ -116,6 +116,8 @@ public class DumpRestoreController extends FreemarkerHttpServlet {
 			bodyMap.put("tripleCount", tripleCount);
 		}
 
+		bodyMap.put("title", "Dump or Restore the knowledge base");
+
 		return new TemplateResponseValues(TEMPLATE_NAME, bodyMap);
 	}
 

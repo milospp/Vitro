@@ -33,6 +33,7 @@ public class ShowConfiguration extends FreemarkerHttpServlet {
 		Map<String, Object> body = new HashMap<String, Object>();
 		body.put("configurationProperties", getConfigurationProperties(vreq));
 		body.put("javaSystemProperties", getSystemProperties());
+		body.put("title", "Configuration settings");
 		return new TemplateResponseValues("admin-showConfiguration.ftl", body);
 	}
 

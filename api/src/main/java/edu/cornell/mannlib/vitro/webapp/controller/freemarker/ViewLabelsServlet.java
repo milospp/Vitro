@@ -31,6 +31,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ExceptionResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.dao.jena.QueryUtils;
 import edu.cornell.mannlib.vitro.webapp.i18n.selection.SelectedLocale;
 import edu.cornell.mannlib.vitro.webapp.rdfservice.filter.LanguageFilteringUtils;
@@ -65,8 +66,10 @@ public class ViewLabelsServlet extends FreemarkerHttpServlet{
 
 		  if( subject != null && subject.getName() != null ){
 	            body.put("subjectName", subject.getName());
+	            body.put("title", I18n.text(vreq, "view_labels_for") + " " + subject.getName());
 	        }else{
 	            body.put("subjectName", null);
+	            body.put("title", I18n.text(vreq, "view_labels_capitalized"));
 	        }
 
 		} catch (Throwable e) {

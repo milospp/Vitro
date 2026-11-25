@@ -266,6 +266,7 @@ public class RolesController extends FreemarkerHttpServlet {
         WebappDaoFactory wadf = ModelAccess.on(vreq).getWebappDaoFactory();
         List<PermissionSet> roles = new ArrayList<>(wadf.getUserAccountsDao().getAllPermissionSets());
         TemplateResponseValues response = new TemplateResponseValues(TEMPLATE);
+        response.put("title", I18n.text(vreq, "user_roles"));
         response.put("roles", roles);
         return response;
     }

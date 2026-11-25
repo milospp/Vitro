@@ -131,6 +131,7 @@ public class ListVClassWebappsController extends FreemarkerHttpServlet {
             body.put("jsonTree", json.toString());
         }
 
+        body.put("title", body.get("pageTitle"));
         return new TemplateResponseValues(TEMPLATE_NAME, body);
     }
 

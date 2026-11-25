@@ -139,6 +139,7 @@ public class ShowObjectPropertyHierarchyController extends FreemarkerHttpServlet
         } catch (Throwable t) {
             t.printStackTrace();
         }
+        body.put("title", body.get("pageTitle"));
         return new TemplateResponseValues(TEMPLATE_NAME, body);
 
     }

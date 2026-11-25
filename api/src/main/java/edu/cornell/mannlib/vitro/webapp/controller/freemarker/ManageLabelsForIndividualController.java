@@ -18,6 +18,7 @@ import edu.cornell.mannlib.vitro.webapp.beans.Individual;
 import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.dao.jena.QueryUtils;
 
 
@@ -48,8 +49,10 @@ public class ManageLabelsForIndividualController extends FreemarkerHttpServlet {
         Individual subject = vreq.getWebappDaoFactory().getIndividualDao().getIndividualByURI(subjectUri);
         if( subject != null && subject.getName() != null ){
              body.put("subjectName", subject.getName());
+             body.put("title", I18n.text(vreq, "manage_labels_for") + " " + subject.getName());
         }else{
              body.put("subjectName", null);
+             body.put("title", I18n.text(vreq, "manage_labels_capitalized"));
         }
 
         return new TemplateResponseValues(TEMPLATE_NAME, body);

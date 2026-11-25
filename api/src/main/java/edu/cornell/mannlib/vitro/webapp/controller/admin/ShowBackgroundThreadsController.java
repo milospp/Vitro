@@ -14,6 +14,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 import edu.cornell.mannlib.vitro.webapp.utils.threads.VitroBackgroundThread;
 
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,7 @@ public class ShowBackgroundThreadsController extends FreemarkerHttpServlet {
 
 		Map<String, Object> bodyMap = new HashMap<String, Object>();
 		bodyMap.put("threads", new ArrayList<ThreadInfo>(threadMap.values()));
+		bodyMap.put("title", I18n.text(vreq, "background_threads"));
 
 		return new TemplateResponseValues(TEMPLATE_NAME, bodyMap);
 

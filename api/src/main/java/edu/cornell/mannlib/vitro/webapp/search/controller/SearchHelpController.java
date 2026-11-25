@@ -13,6 +13,7 @@ import edu.cornell.mannlib.vitro.webapp.controller.VitroRequest;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.FreemarkerHttpServlet;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.ResponseValues;
 import edu.cornell.mannlib.vitro.webapp.controller.freemarker.responsevalues.TemplateResponseValues;
+import edu.cornell.mannlib.vitro.webapp.i18n.I18n;
 
 
 @WebServlet(name = "SearchHelpController", urlPatterns = {"/searchHelp"} )
@@ -29,6 +30,7 @@ public class SearchHelpController extends FreemarkerHttpServlet {
         String pointOfOrigin = "helpLink";
 
         body.put("origination", pointOfOrigin);
+        body.put("title", I18n.text(vreq, "search_tips_header"));
 
         return new TemplateResponseValues(TEMPLATE_NAME, body);
     }
