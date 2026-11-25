@@ -55,10 +55,11 @@ li.nonSelectedGroupTab {
 li.selectedGroupTab {
     float:left;
     border: 1px solid #DFE6E5;
+    border-top: 3px solid #13739D;
     border-bottom-color:#fff;
-    background-color:#13739D;
-    color: #FFF;
-    padding: 6px 8px 6px 8px;
+    background-color:#fff;
+    color: #064d68;
+    padding: 4px 8px 6px 8px;
     border-top-right-radius: 4px;
     -moz-border-radius-topright: 4px;
     -webkit-border-top-right-radius: 4px;
