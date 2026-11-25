@@ -10,7 +10,7 @@
     <label for="addProfileEditor">${strings.add_profile_editor}</label>
     <input id="addProfileEditor" type="text" name="proxySelectorAC" class="acSelector" size="35"
             value="${strings.select_existing_last_name}" />
-    <span><img class="loading-profileMyAccoount hidden" src="${urls.images}/indicatorWhite.gif" /></span>
+    <span><img class="loading-profileMyAccoount hidden" src="${urls.images}/indicatorWhite.gif" alt="${i18n().processing_indicator}" /></span>
 
     <p class="search-status">
         <span name='proxySelectorSearchStatus' moreCharsText='${strings.type_more_characters}' noMatchText='${strings.no_match}'>&nbsp;</span>

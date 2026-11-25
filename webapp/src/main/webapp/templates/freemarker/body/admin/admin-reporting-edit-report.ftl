@@ -31,7 +31,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/reporting.css" 
                 '<div id="field_dataSource' + dataSourceIndex + '" class="reportDatasource">' +
                 <#if readOnly??>
                 <#else>
-                '<button class="delete" onclick="return deleteDataSource(' + dataSourceIndex + ');"><img src="${urls.images!}/individual/deleteIcon.gif" /></button>' +
+                '<button class="delete" onclick="return deleteDataSource(' + dataSourceIndex + ');"><img src="${urls.images!}/individual/deleteIcon.gif" alt="${i18n().delete_button}" /></button>' +
                 </#if>
                 '<input type="hidden" name="dataSourceIndex" value="' + dataSourceIndex + '" <#if readOnly??>readonly</#if> />' +
                 '<label>${i18n()["reporting_config_dataSource_distributor"]}</label>' +
@@ -54,7 +54,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/reporting.css" 
 
         return false;
     }
-    //                '<button class="delete" onclick="return deleteDataSource(\'field_dataSource' + dataSourceIndex + '\');"><img src="${urls.images!}/individual/deleteIcon.gif" /></button>' +
+    //                '<button class="delete" onclick="return deleteDataSource(\'field_dataSource' + dataSourceIndex + '\');"><img src="${urls.images!}/individual/deleteIcon.gif" alt="${i18n().delete_button}" /></button>' +
 
     function deleteDataSource(id) {
         var element = document.getElementById("field_dataSource" + id);
@@ -94,7 +94,7 @@ ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/reporting.css" 
         <#if report.implementsTemplate>
             <#if report.template?? && report.reportName??>
                 <div class="downloadTemplate">
-                    <a href="${submitUrlBase}/${report.reportName!}?download=template">${i18n().reporting_download_template} <img src="${urls.images!}/download-icon.png" /></a>
+                    <a href="${submitUrlBase}/${report.reportName!}?download=template">${i18n().reporting_download_template} <img src="${urls.images!}/download-icon.png" alt="" /></a>
                 </div>
             </#if>
             <div class="reportTemplate">

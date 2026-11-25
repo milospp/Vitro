@@ -557,7 +557,7 @@ ORNGToggleGadget.prototype.getTitleBarContent = function(continuation) {
 				+ this.cssClassTitleButton
 				+ '"><img id="gadgets-gadget-title-image-'
 				+ this.id
-				+ '" src="/' + location.pathname.split('/')[1] + '/themes/wilma/images/green_minus_sign.gif"/></a></span> <span id="'
+				+ '" src="/' + location.pathname.split('/')[1] + '/themes/wilma/images/green_minus_sign.gif" alt="Toggle gadget"/></a></span> <span id="'
 				+ this.getIframeId() + '_title" class="' + this.cssClassTitle
 				+ '">' + this.getTitleHtml(this.title)
 				+ '</span><span id="' + this.getIframeId()
