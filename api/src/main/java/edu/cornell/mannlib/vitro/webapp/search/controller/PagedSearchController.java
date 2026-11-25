@@ -3,6 +3,8 @@
 package edu.cornell.mannlib.vitro.webapp.search.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -172,7 +174,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
             int hitsPerPage = getHitsPerPage(vreq);
             int documentsToReturn = hitsPerPage;
             if (!wasHtmlRequested) {
-                documentsToReturn = getDocumentsNumber(vreq);    
+                documentsToReturn = getDocumentsNumber(vreq);
             }
             String queryText = getQueryText(vreq);
             log.debug("Query text is \"" + queryText + "\"");
@@ -203,6 +205,8 @@ public class PagedSearchController extends FreemarkerHttpServlet {
             SearchResponse response = null;
 
             try {
+                query.setSimpleQuery(!query.getQuery().trim().equals("*:*"));
+
                 response = search.query(query);
             } catch (Exception ex) {
                 String msg = makeBadSearchMessage(queryText, ex.getMessage(), vreq);
@@ -237,6 +241,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
                     String uri = doc.getStringValue(VitroSearchTermNames.URI);
                     Individual ind = iDao.getIndividualByURI(uri);
                     if (ind != null) {
+                        setModDate(doc, ind);
                         ind.setSearchSnippet(getSnippet(doc, response));
                         individuals.add(ind);
                     }
@@ -259,7 +264,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
             /* Compile the data for the templates */
 
             Map<String, Object> body = new HashMap<String, Object>();
-          
+
             /* Add ClassGroup and type refinement links to body */
             if (wasHtmlRequested) {
                 if (log.isDebugEnabled()) {
@@ -314,6 +319,18 @@ public class PagedSearchController extends FreemarkerHttpServlet {
             return templateResponseValues;
         } catch (Throwable e) {
             return doSearchError(e, format);
+        }
+    }
+
+    private static void setModDate(SearchResultDocument doc, Individual ind) {
+        String modDate = doc.getStringValue("mod_date_drsim");
+        if (StringUtils.isNotBlank(modDate)) {
+            if (modDate.startsWith("[")) {
+                modDate = StringUtils.substring(modDate, 1);
+            }
+            modDate = StringUtils.substring(modDate, 0, 20);
+            Instant instant = Instant.parse(modDate);
+            ind.setModTime(Timestamp.from(instant));
         }
     }
 
@@ -415,7 +432,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
         log.debug("hitsPerPage is " + hitsPerPage);
         return hitsPerPage;
     }
-    
+
     private static int getDocumentsNumber(VitroRequest vreq) {
         int documentsNumber = DEFAULT_DOCUMENTS_NUMBER;
         try {

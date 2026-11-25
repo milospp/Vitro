@@ -42,13 +42,13 @@
             <a href="${submitUrlBase}">cancel</a>
         <#else>
         <input type="hidden" name="submitted" value="submitted" />
-        <input id="save" value="${i18n().dd_config_save}" role="button" type="submit" class="submit" />
+        <input id="save" value="${i18n().save_button}" role="button" type="submit" class="submit" />
             <a href="${submitUrlBase}">cancel</a>
         <#if addType??>
         <#else>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button onclick="return confirmDeleteThis()">
-                <img src="${urls.images!}/individual/deleteIcon.gif" alt="${i18n().dd_config_delete}"> ${i18n().dd_config_delete}
+                <img src="${urls.images!}/individual/deleteIcon.gif" alt="${i18n().delete_button}"> ${i18n().delete_button}
             </button>
             <script lang="text/javascript">
                 function confirmDeleteThis() {
@@ -79,13 +79,26 @@
         </label>
         <#switch property.parameterType.name>
             <#case 'java.lang.String'>
-                <#if fields[property.propertyUri]??>
-                    <#assign values = fields[property.propertyUri] />
-                    <#list values as value>
-                        <@inputField property.propertyUri value required />
-                    </#list>
+                <#if property.propertyUri == "http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#rdfLang">
+	                <select name="${property.propertyUri}">
+                        <option value="N3" <#if fields[property.propertyUri]?? && fields[property.propertyUri]?seq_contains('N3')>selected</#if> >N3</option>
+                        <option value="TTL" <#if fields[property.propertyUri]?? && fields[property.propertyUri]?seq_contains('TTL')>selected</#if> >TTL</option>
+                        <option value="RDF/XML" <#if fields[property.propertyUri]?? && fields[property.propertyUri]?seq_contains('RDF/XML')>selected</#if> >RDF/XML</option>
+	                </select>
+                <#elseif property.propertyUri == "http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#resultFormat">
+	                <select name="${property.propertyUri}">
+                        <option value="JSON" <#if fields[property.propertyUri]?? && fields[property.propertyUri]?seq_contains('JSON')>selected</#if> >JSON</option>
+                        <option value="CSV" <#if fields[property.propertyUri]?? && fields[property.propertyUri]?seq_contains('CSV')>selected</#if> >CSV</option>
+	                </select>
                 <#else>
-                    <@inputField property.propertyUri "" required />
+                	<#if fields[property.propertyUri]??>
+	                    <#assign values = fields[property.propertyUri] />
+	                    <#list values as value>
+	                        <@inputField property.propertyUri value required />
+	                    </#list>
+	                <#else>
+	                    <@inputField property.propertyUri "" required />
+	                </#if>
                 </#if>
                 <#break>
             <#case 'edu.cornell.library.scholars.webapp.controller.api.distribute.DataDistributor'>

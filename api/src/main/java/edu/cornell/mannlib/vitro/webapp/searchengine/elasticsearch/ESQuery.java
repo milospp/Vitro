@@ -5,19 +5,18 @@ package edu.cornell.mannlib.vitro.webapp.searchengine.elasticsearch;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
+import java.nio.charset.Charset;
 
 import edu.cornell.mannlib.vitro.webapp.modules.searchEngine.SearchEngineException;
 import edu.cornell.mannlib.vitro.webapp.modules.searchEngine.SearchQuery;
 import edu.cornell.mannlib.vitro.webapp.modules.searchEngine.SearchResponse;
-import edu.cornell.mannlib.vitro.webapp.utils.http.HttpClientFactory;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 
 /**
  * Convert a SearchQuery to JSON, send it to Elasticsearch, and convert the JSON
@@ -34,20 +33,23 @@ public class ESQuery {
 
     public SearchResponse query(SearchQuery query)
             throws SearchEngineException {
-        String queryString = new QueryConverter(query).asString();
+        boolean treatAsStructuredQuery = !query.isSimpleQuery();
+
+        String queryString = new QueryConverter(query, treatAsStructuredQuery).asString();
         String response = doTheQuery(queryString);
-        return new ResponseParser(response).parse();
+        return new ResponseParser(response)
+            .parse(query.getFacetTextToMatch(), query.isFacetTextCompareCaseInsensitive());
     }
 
     private String doTheQuery(String queryString) {
         log.debug("QUERY: " + queryString);
-        try {
-            String url = baseUrl + "/_search";
-            HttpResponse response = new ESFunkyGetRequest(url)
-                    .bodyString(queryString, ContentType.APPLICATION_JSON)
-                    .execute();
+        String url = baseUrl + "/_search";
+
+        try(CloseableHttpResponse response = new ESFunkyGetRequest(url)
+            .bodyString(queryString, ContentType.APPLICATION_JSON)
+            .execute()) {
             String responseString = IOUtils
-                    .toString(response.getEntity().getContent());
+                    .toString(response.getEntity().getContent(), Charset.defaultCharset());
             log.debug("RESPONSE: " + responseString);
             return responseString;
         } catch (Exception e) {
@@ -65,10 +67,10 @@ public class ESQuery {
      * allow you to put a body on a GET request. In online discussion, some say
      * that the HTTP spec is ambiguous on this point, so each implementation
      * makes its own choice. For example, CURL allows it.
-     * 
+     *
      * More to the point however, is that ElasticSearch requires it. So here's a
      * simple class to make that possible.
-     * 
+     *
      * USE POST INSTEAD!!
      */
     private static class ESFunkyGetRequest
@@ -88,9 +90,9 @@ public class ESQuery {
             return this;
         }
 
-        public HttpResponse execute() throws SearchEngineException {
+        public CloseableHttpResponse execute() throws SearchEngineException {
             try {
-                return HttpClientFactory.getHttpClient().execute(this);
+                return ESHttpClient.execute(this);
             } catch (IOException e) {
                 throw new SearchEngineException(e);
             }

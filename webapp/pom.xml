@@ -7,13 +7,13 @@
 
     <groupId>org.vivoweb</groupId>
     <artifactId>vitro-webapp</artifactId>
-    <version>1.15.1-SNAPSHOT</version>
+    <version>1.16.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <parent>
         <groupId>org.vivoweb</groupId>
         <artifactId>vitro-project</artifactId>
-        <version>1.15.1-SNAPSHOT</version>
+        <version>1.16.1-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -80,6 +80,23 @@
                                         </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
                                     </fileMappers>
                                     <outputDirectory>target/${project.artifactId}-${project.version}/webjars/jquery-migrate/</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.webjars.bower</groupId>
+                                    <artifactId>jquery.scrollTo</artifactId>
+                                    <version>2.1.2</version>
+                                    <type>jar</type>
+                                    <includes>
+                                        META-INF/resources/webjars/jquery.scrollTo/*/jquery.scrollTo.min.js,
+                                        META-INF/resources/webjars/jquery.scrollTo/*/LICENSE
+                                    </includes>
+                                    <fileMappers>
+                                        <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                            <pattern>^META-INF/resources/webjars/jquery.scrollTo/[^/]+/</pattern>
+                                            <replacement>./</replacement>
+                                        </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                    </fileMappers>
+                                    <outputDirectory>target/${project.artifactId}-${project.version}/webjars/jquery.scrollTo/</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>org.webjars</groupId>
@@ -252,7 +269,7 @@
         <dependency>
             <groupId>org.vivoweb</groupId>
             <artifactId>vitro-api</artifactId>
-            <version>1.15.1-SNAPSHOT</version>
+            <version>1.16.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

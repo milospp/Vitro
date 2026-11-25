@@ -2,22 +2,22 @@
 
 package edu.cornell.mannlib.vitro.webapp.servlet.setup;
 
-import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
-import edu.cornell.mannlib.vitro.webapp.startup.StartupStatus;
-import edu.cornell.mannlib.vitro.webapp.utils.http.HttpClientFactory;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
+import edu.cornell.mannlib.vitro.webapp.searchengine.elasticsearch.ESHttpClient;
+import edu.cornell.mannlib.vitro.webapp.startup.StartupStatus;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.util.EntityUtils;
 
 /**
  * If we can't connect to ElasticSearch, add a Warning item to the StartupStatus.
@@ -35,23 +35,26 @@ public class ElasticSmokeTest {
     public void doTest(ServletContextEvent sce) {
         final StartupStatus ss = StartupStatus.getBean(sce.getServletContext());
 
-        String elasticUrlString = ConfigurationProperties.getBean(sce).getProperty("vitro.local.elastic.url", "");
+        String elasticUrlString = ConfigurationProperties.getInstance().getProperty("vitro.local.searchengine.url", "");
+
+        log.debug("Initializing ElasticSearch: " + elasticUrlString);
+
         if (elasticUrlString.isEmpty()) {
             ss.fatal(listener, "Can't connect to ElasticSearch engine. "
-                    + "runtime.properties must contain a value for "
-                    + "vitro.local.elastic.url");
+                + "runtime.properties must contain a value for "
+                + "vitro.local.searchengine.url");
             return;
         }
 
         URL elasticUrl = null;
 
         try {
-            elasticUrl = new URL(elasticUrlString);
-        } catch (MalformedURLException e) {
+            elasticUrl = new URI(elasticUrlString).toURL();
+        } catch (Exception e) {
             ss.fatal(listener, "Can't connect to ElasticSearch engine. "
-                    + "The value for vitro.local.elastic.url "
-                    + "in runtime.properties is not a valid URL: '"
-                    + elasticUrlString + "'", e);
+                + "The value for vitro.local.searchengine.url "
+                + "in runtime.properties is not a valid URL: '"
+                + elasticUrlString + "'", e);
         }
 
         ss.info(listener, "Starting ElasticSearch test.");
@@ -82,17 +85,16 @@ public class ElasticSmokeTest {
      */
     private static class ElasticPinger {
         private final URL elasticUrl;
-        private final HttpClient httpClient = HttpClientFactory.getHttpClient();
 
         public ElasticPinger(URL elasticUrl) {
             this.elasticUrl = elasticUrl;
         }
 
         public void ping() throws ElasticProblemException {
-            try {
-                HttpGet method = new HttpGet(elasticUrl.toExternalForm());
-                log.debug("Trying to ping ElasticSearch");
-                HttpResponse response = httpClient.execute(method);
+            HttpGet method = new HttpGet(elasticUrl.toExternalForm());
+            log.debug("Trying to ping ElasticSearch");
+
+            try(CloseableHttpResponse response = ESHttpClient.execute(method)) {
                 try {
                     log.debug("Finished pinging ElasticSearch");
                     int statusCode = response.getStatusLine().getStatusCode();

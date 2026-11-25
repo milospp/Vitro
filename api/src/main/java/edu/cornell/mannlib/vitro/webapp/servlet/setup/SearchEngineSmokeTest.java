@@ -2,13 +2,17 @@
 
 package edu.cornell.mannlib.vitro.webapp.servlet.setup;
 
-import edu.cornell.mannlib.vitro.webapp.config.ConfigurationProperties;
-import edu.cornell.mannlib.vitro.webapp.startup.StartupStatus;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Objects;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import edu.cornell.mannlib.vitro.webapp.application.ApplicationUtils;
+import edu.cornell.mannlib.vitro.webapp.searchengine.base.SearchEngineUtil;
+import edu.cornell.mannlib.vitro.webapp.startup.StartupStatus;
 
 /**
  * Start up the appropriate search engine smoke test based on the configured URL property.
@@ -21,28 +25,26 @@ public class SearchEngineSmokeTest implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         final StartupStatus ss = StartupStatus.getBean(sce.getServletContext());
 
-        String solrUrlString = ConfigurationProperties.getBean(sce).getProperty("vitro.local.solr.url", "");
-        String elasticUrlString = ConfigurationProperties.getBean(sce).getProperty("vitro.local.elastic.url", "");
+        String searchEngineUrlString = SearchEngineUtil.getSearchEngineURLProperty();
 
-        if (!solrUrlString.isEmpty() && !elasticUrlString.isEmpty()) {
-            ss.fatal(this, "More than one search engine is configured: " + solrUrlString + ", and " + elasticUrlString);
-
-        } else if (solrUrlString.isEmpty() && elasticUrlString.isEmpty()) {
-            ss.fatal(this, "No search engine is configured");
-
-        } else if (!solrUrlString.isEmpty()) {
-            log.debug("Initializing Solr: " + solrUrlString);
-            new SolrSmokeTest(this).doTest(sce);
-
-        } else {
-            log.debug("Initializing ElasticSearch: " + elasticUrlString);
-            new ElasticSmokeTest(this).doTest(sce);
+        if (Objects.isNull(searchEngineUrlString) || searchEngineUrlString.isEmpty()) {
+            ss.fatal(this, "Search engine URL is not set.");
         }
+
+        try {
+        	ApplicationUtils.instance().getSearchEngine().test(this, sce);
+        } catch (Exception e) {
+        	log.error(e, e);
+        	ss.fatal(this, e.getMessage());
+        }
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         // nothing to tear down.
     }
+
+    
 
 }
